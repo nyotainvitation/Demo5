@@ -477,7 +477,7 @@
                 </div>
             </section>
 
-            <!-- 🎵 NEW: Wedding Soundtrack -->
+            <!-- 🎵 Wedding Soundtrack -->
             <section class="max-w-5xl mx-auto reveal pt-10">
                 <div class="bg-cream-900 rounded-3xl p-6 md:p-10 relative overflow-hidden shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 border border-gold-500/20">
                     <div class="absolute top-0 left-0 w-32 h-32 bg-gold-500/20 rounded-full blur-[50px] pointer-events-none"></div>
@@ -500,7 +500,7 @@
                 </div>
             </section>
 
-            <!-- ✨ NEW: Social Hashtag Banner -->
+            <!-- ✨ Social Hashtag Banner -->
             <section class="max-w-5xl mx-auto reveal pt-10">
                 <div class="bg-gradient-to-r from-cream-100 via-white to-cream-100 border-y border-cream-200 py-10 md:py-14 text-center relative overflow-hidden">
                     <i data-lucide="instagram" class="absolute -right-4 -top-4 w-32 h-32 text-gold-500/5 rotate-12 pointer-events-none"></i>
@@ -588,41 +588,53 @@
                     <p class="text-gold-600 tracking-widest text-[10px] md:text-xs uppercase mt-3 font-semibold">Please respond by January 15th</p>
                 </div>
                 
-                <form id="rsvp-form" onsubmit="submitRSVP(event)" class="bg-white border border-cream-200 p-6 md:p-12 lg:p-16 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.03)]">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                        <div>
-                            <label class="text-xs font-bold tracking-widest uppercase text-cream-800/80 mb-2 block">Full Name(s)</label>
-                            <input type="text" id="rsvp-name" required placeholder="Mr. & Mrs. Sharma" class="w-full bg-cream-50 border border-cream-200 rounded-lg py-4 px-4 text-cream-900 text-sm outline-none focus:border-gold-400 focus:bg-white transition-all">
+                <!-- Swappable RSVP Container -->
+                <div id="rsvp-container" class="bg-white border border-cream-200 p-6 md:p-12 lg:p-16 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.03)] relative overflow-hidden">
+                    <form id="rsvp-form" onsubmit="submitRSVP(event)">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                            <div>
+                                <label class="text-xs font-bold tracking-widest uppercase text-cream-800/80 mb-2 block">Full Name(s)</label>
+                                <input type="text" id="rsvp-name" required placeholder="Mr. & Mrs. Sharma" class="w-full bg-cream-50 border border-cream-200 rounded-lg py-4 px-4 text-cream-900 text-sm outline-none focus:border-gold-400 focus:bg-white transition-all">
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold tracking-widest uppercase text-cream-800/80 mb-2 block">Will you attend?</label>
+                                <select id="rsvp-attend" required class="w-full bg-cream-50 border border-cream-200 rounded-lg py-4 px-4 text-cream-900 text-sm outline-none focus:border-gold-400 focus:bg-white transition-all appearance-none cursor-pointer">
+                                    <option value="" disabled selected>Select an option...</option>
+                                    <option value="Joyfully Accept">Joyfully Accept</option>
+                                    <option value="Regretfully Decline">Regretfully Decline</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold tracking-widest uppercase text-cream-800/80 mb-2 block">Number of Guests</label>
+                                <input type="number" id="rsvp-guests" min="1" max="10" placeholder="e.g., 2" class="w-full bg-cream-50 border border-cream-200 rounded-lg py-4 px-4 text-cream-900 text-sm outline-none focus:border-gold-400 focus:bg-white transition-all">
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold tracking-widest uppercase text-cream-800/80 mb-2 block flex items-center gap-2">
+                                    <i data-lucide="music" class="w-3 h-3 text-gold-500"></i> Sangeet Song Request
+                                </label>
+                                <input type="text" id="rsvp-song" placeholder="What song will get you dancing?" class="w-full bg-cream-50 border border-cream-200 rounded-lg py-4 px-4 text-cream-900 text-sm outline-none focus:border-gold-400 focus:bg-white transition-all">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="text-xs font-bold tracking-widest uppercase text-cream-800/80 mb-2 block">Dietary Requirements</label>
+                                <textarea id="rsvp-diet" rows="2" placeholder="Any allergies or preferences? (e.g., Vegan, Jain)" class="w-full bg-cream-50 border border-cream-200 rounded-lg p-4 text-cream-900 text-sm outline-none focus:border-gold-400 focus:bg-white transition-all resize-none"></textarea>
+                            </div>
                         </div>
-                        <div>
-                            <label class="text-xs font-bold tracking-widest uppercase text-cream-800/80 mb-2 block">Will you attend?</label>
-                            <select id="rsvp-attend" required class="w-full bg-cream-50 border border-cream-200 rounded-lg py-4 px-4 text-cream-900 text-sm outline-none focus:border-gold-400 focus:bg-white transition-all appearance-none cursor-pointer">
-                                <option value="" disabled selected>Select an option...</option>
-                                <option value="Joyfully Accept">Joyfully Accept</option>
-                                <option value="Regretfully Decline">Regretfully Decline</option>
-                            </select>
+                        <div class="mt-8 md:mt-10 flex justify-center">
+                            <button id="rsvp-submit-btn" type="submit" class="w-full md:w-auto px-12 py-4 md:py-5 bg-gold-500 hover:bg-gold-600 text-white font-bold tracking-[0.2em] uppercase text-xs md:text-sm rounded-full shadow-lg transition-all flex items-center justify-center gap-3 hover:scale-105">
+                                <i data-lucide="mail" class="w-4 h-4 md:w-5 md:h-5"></i> Send RSVP
+                            </button>
                         </div>
-                        <div>
-                            <label class="text-xs font-bold tracking-widest uppercase text-cream-800/80 mb-2 block">Number of Guests</label>
-                            <input type="number" id="rsvp-guests" min="1" max="10" placeholder="e.g., 2" class="w-full bg-cream-50 border border-cream-200 rounded-lg py-4 px-4 text-cream-900 text-sm outline-none focus:border-gold-400 focus:bg-white transition-all">
+                    </form>
+
+                    <!-- Success State (Hidden initially) -->
+                    <div id="rsvp-success-card" class="hidden absolute inset-0 bg-white flex flex-col items-center justify-center text-center p-8 animate-pop-in">
+                        <div class="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mb-6 text-green-600 border border-green-200 shadow-inner">
+                            <i data-lucide="check-check" class="w-10 h-10"></i>
                         </div>
-                        <div>
-                            <label class="text-xs font-bold tracking-widest uppercase text-cream-800/80 mb-2 block flex items-center gap-2">
-                                <i data-lucide="music" class="w-3 h-3 text-gold-500"></i> Sangeet Song Request
-                            </label>
-                            <input type="text" id="rsvp-song" placeholder="What song will get you dancing?" class="w-full bg-cream-50 border border-cream-200 rounded-lg py-4 px-4 text-cream-900 text-sm outline-none focus:border-gold-400 focus:bg-white transition-all">
-                        </div>
-                        <div class="md:col-span-2">
-                            <label class="text-xs font-bold tracking-widest uppercase text-cream-800/80 mb-2 block">Dietary Requirements</label>
-                            <textarea id="rsvp-diet" rows="2" placeholder="Any allergies or preferences? (e.g., Vegan, Jain)" class="w-full bg-cream-50 border border-cream-200 rounded-lg p-4 text-cream-900 text-sm outline-none focus:border-gold-400 focus:bg-white transition-all resize-none"></textarea>
-                        </div>
+                        <h4 class="text-3xl font-serif italic text-cream-900 mb-2">RSVP Confirmed</h4>
+                        <p class="text-sm text-cream-800/70 font-medium">Thank you! Your response has been securely recorded. <br>We can't wait to celebrate with you.</p>
                     </div>
-                    <div class="mt-8 md:mt-10 flex justify-center">
-                        <button id="rsvp-submit-btn" type="submit" class="w-full md:w-auto px-12 py-4 md:py-5 bg-gold-500 hover:bg-gold-600 text-white font-bold tracking-[0.2em] uppercase text-xs md:text-sm rounded-full shadow-lg transition-all flex items-center justify-center gap-3 hover:scale-105">
-                            <i data-lucide="mail" class="w-4 h-4 md:w-5 md:h-5"></i> Send RSVP
-                        </button>
-                    </div>
-                </form>
+                </div>
             </section>
 
             <!-- ❓ Frequently Asked Questions -->
@@ -633,7 +645,6 @@
                 </div>
                 
                 <div class="space-y-4">
-                    <!-- FAQ 1 -->
                     <div class="bg-white rounded-xl shadow-sm border border-cream-200 overflow-hidden" onclick="toggleAccordion('faq-1')">
                         <div class="p-5 md:p-6 flex items-center justify-between cursor-pointer group">
                             <h4 class="text-sm md:text-base font-bold text-cream-900 group-hover:text-gold-600 transition-colors">Are kids welcome at the wedding?</h4>
@@ -644,7 +655,6 @@
                         </div>
                     </div>
 
-                    <!-- FAQ 2 -->
                     <div class="bg-white rounded-xl shadow-sm border border-cream-200 overflow-hidden" onclick="toggleAccordion('faq-2')">
                         <div class="p-5 md:p-6 flex items-center justify-between cursor-pointer group">
                             <h4 class="text-sm md:text-base font-bold text-cream-900 group-hover:text-gold-600 transition-colors">Can I bring a plus one?</h4>
@@ -655,7 +665,6 @@
                         </div>
                     </div>
 
-                    <!-- FAQ 3 -->
                     <div class="bg-white rounded-xl shadow-sm border border-cream-200 overflow-hidden" onclick="toggleAccordion('faq-3')">
                         <div class="p-5 md:p-6 flex items-center justify-between cursor-pointer group">
                             <h4 class="text-sm md:text-base font-bold text-cream-900 group-hover:text-gold-600 transition-colors">What will the weather be like?</h4>
@@ -710,8 +719,8 @@
                     </button>
                 </div>
 
-                <!-- Dynamic container injected via JS -->
                 <div id="guestbook-container" class="flex overflow-x-auto gap-4 md:gap-8 pb-8 hide-scrollbar snap-x snap-mandatory">
+                    <!-- Injected via JS -->
                 </div>
             </section>
 
@@ -840,7 +849,6 @@
     <div id="admin-dashboard-modal" class="fixed inset-0 bg-cream-900/95 z-[120] flex items-center justify-center hidden opacity-0 transition-opacity duration-300 backdrop-blur-md px-4 custom-modal-overlay py-10">
         <div class="bg-white w-full max-w-5xl h-full max-h-[90vh] rounded-2xl shadow-2xl flex flex-col custom-modal-box overflow-hidden border border-gold-400/20">
             
-            <!-- Backend Header -->
             <div class="bg-cream-50 border-b border-cream-200 p-6 flex items-center justify-between z-10">
                 <div class="flex items-center gap-3">
                     <i data-lucide="settings" class="w-6 h-6 text-gold-500"></i>
@@ -1015,24 +1023,28 @@
         </div>
     </div>
 
-    <!-- 🧠 9️⃣ AI Wedding Assistant -->
+    <!-- 🧠 9️⃣ AI Wedding Assistant (ADVANCED NYOTA) -->
     <div id="ai-chat-container" class="fixed bottom-24 right-4 md:right-8 z-50 flex flex-col items-end hidden">
-        <div class="bg-white border border-cream-200 w-[300px] md:w-[380px] h-[400px] md:h-[500px] rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] mb-4 flex flex-col overflow-hidden transform scale-95 opacity-0 transition-all duration-300 origin-bottom-right" id="chat-window">
+        <div class="bg-white border border-cream-200 w-[320px] md:w-[400px] h-[500px] md:h-[550px] rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] mb-4 flex flex-col overflow-hidden transform scale-95 opacity-0 transition-all duration-300 origin-bottom-right" id="chat-window">
+            
             <div class="bg-cream-50 border-b border-cream-200 p-4 md:p-5 flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 md:w-12 md:h-12 bg-gold-50 rounded-full flex items-center justify-center text-gold-600 font-serif italic text-xl md:text-2xl border border-gold-200">N</div>
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-gold-50 rounded-full flex items-center justify-center text-gold-600 font-serif italic text-xl md:text-2xl border border-gold-200 relative">
+                        N
+                        <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
+                    </div>
                     <div>
-                        <span class="text-cream-900 font-semibold text-sm md:text-base block">Nyota Assistant</span>
-                        <span class="text-[10px] text-green-600 font-bold tracking-wider uppercase">Online</span>
+                        <span class="text-cream-900 font-semibold text-sm md:text-base block">Nyota AI</span>
+                        <span class="text-[10px] text-green-600 font-bold tracking-wider uppercase">Online & Ready</span>
                     </div>
                 </div>
-                <button onclick="toggleChat()" class="text-cream-800 hover:text-gold-500 transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
+                <button onclick="toggleChat()" class="text-cream-800 hover:text-gold-500 transition-colors bg-white p-2 rounded-full shadow-sm border border-cream-100"><i data-lucide="chevron-down" class="w-4 h-4"></i></button>
             </div>
             
-            <div id="chat-messages" class="flex-1 p-4 md:p-6 overflow-y-auto space-y-5 text-sm bg-white hide-scrollbar">
+            <div id="chat-messages" class="flex-1 p-4 md:p-6 overflow-y-auto space-y-5 text-sm bg-white hide-scrollbar flex flex-col">
                 <div class="flex items-start gap-3 animate-fade-in-up">
-                    <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gold-50 flex-shrink-0 flex items-center justify-center text-gold-600 font-serif italic text-sm md:text-base border border-gold-100">N</div>
-                    <div class="bg-cream-50 border border-cream-100 p-4 rounded-2xl rounded-tl-none text-cream-900 shadow-sm text-sm md:text-base leading-relaxed font-medium">
+                    <div class="w-8 h-8 rounded-full bg-gold-50 flex-shrink-0 flex items-center justify-center text-gold-600 font-serif italic text-sm border border-gold-100">N</div>
+                    <div class="bg-cream-50 border border-cream-100 p-4 rounded-2xl rounded-tl-none text-cream-900 shadow-sm text-sm leading-relaxed font-medium" id="nyota-greeting">
                         Welcome! I am Nyota. How can I assist you with the wedding details today?
                     </div>
                 </div>
@@ -1040,11 +1052,22 @@
 
             <!-- Typing Indicator -->
             <div id="typing-indicator" class="px-6 pb-3 hidden">
-                <span class="text-[10px] md:text-xs text-cream-800/50 italic font-medium">Nyota is typing...</span>
+                <div class="flex items-center gap-1 bg-cream-50 w-fit px-3 py-2 rounded-2xl rounded-tl-none border border-cream-100">
+                    <div class="w-1.5 h-1.5 bg-gold-400 rounded-full animate-bounce"></div>
+                    <div class="w-1.5 h-1.5 bg-gold-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                    <div class="w-1.5 h-1.5 bg-gold-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                </div>
+            </div>
+
+            <!-- Suggested Prompts -->
+            <div id="suggested-prompts" class="px-4 pb-2 flex gap-2 overflow-x-auto hide-scrollbar">
+                <button onclick="sendSuggested('Dress code?')" class="whitespace-nowrap px-3 py-1.5 bg-cream-50 border border-cream-200 hover:bg-gold-50 hover:border-gold-300 transition-colors rounded-full text-[10px] font-bold tracking-widest uppercase text-cream-900">👗 Dress Code</button>
+                <button onclick="sendSuggested('Venue Map?')" class="whitespace-nowrap px-3 py-1.5 bg-cream-50 border border-cream-200 hover:bg-gold-50 hover:border-gold-300 transition-colors rounded-full text-[10px] font-bold tracking-widest uppercase text-cream-900">📍 Map</button>
+                <button onclick="sendSuggested('Hotel info?')" class="whitespace-nowrap px-3 py-1.5 bg-cream-50 border border-cream-200 hover:bg-gold-50 hover:border-gold-300 transition-colors rounded-full text-[10px] font-bold tracking-widest uppercase text-cream-900">✈️ Hotel</button>
             </div>
 
             <div class="p-3 md:p-4 border-t border-cream-200 bg-white flex gap-2">
-                <input type="text" id="chat-input" placeholder="Ask a question..." class="flex-1 bg-cream-50 text-cream-900 px-4 md:px-5 py-3 md:py-4 rounded-full text-sm outline-none border border-cream-200 focus:border-gold-400 transition-colors" onkeypress="handleChatEnter(event)">
+                <input type="text" id="chat-input" placeholder="Type your message..." class="flex-1 bg-cream-50 text-cream-900 px-4 md:px-5 py-3 md:py-4 rounded-full text-sm outline-none border border-cream-200 focus:border-gold-400 transition-colors" onkeypress="handleChatEnter(event)">
                 <button onclick="sendMessage()" class="bg-gold-500 text-white p-3 md:p-4 rounded-full hover:bg-gold-600 transition-colors shadow-md flex items-center justify-center">
                     <i data-lucide="send" class="w-4 h-4 md:w-5 md:h-5"></i>
                 </button>
@@ -1052,7 +1075,6 @@
         </div>
     </div>
     
-    <!-- Floating Fab -->
     <button id="ai-fab" onclick="toggleChat()" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 bg-white border border-gold-200 text-gold-600 px-5 md:px-8 py-3.5 md:py-5 rounded-full shadow-[0_8px_30px_rgba(181,148,97,0.2)] flex items-center gap-2 hover:scale-105 transition-transform hidden opacity-0 duration-700">
         <i data-lucide="sparkles" class="w-5 h-5 md:w-6 md:h-6"></i>
         <span class="font-bold tracking-widest uppercase text-[10px] md:text-sm">Ask Nyota</span>
@@ -1107,6 +1129,7 @@
             </div>
         </div>
     </div>
+
 
     <!-- SCRIPTS -->
     <script>
@@ -1165,12 +1188,18 @@
         }
         
         // --- 1. System Initializer ---
+        let currentGuestName = "Honored Guest";
+
         document.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
             const name = params.get('guest');
             if (name) {
+                currentGuestName = name;
                 document.getElementById('guest-name-display').innerText = `${name}`;
                 document.getElementById('guest-personalized-msg').innerText = `We would be absolutely thrilled to have you and your family join us in celebrating the beginning of our forever.`;
+                
+                // Personalize Nyota AI
+                document.getElementById('nyota-greeting').innerText = `Welcome, ${name}! I am Nyota, the official wedding assistant. How can I assist you with the details today?`;
             }
             
             seedDefaultData();
@@ -1180,7 +1209,6 @@
         });
 
         function seedDefaultData() {
-            // Seed Mock Wishes if none exist
             if(!localStorage.getItem('weddingWishes')) {
                 const defaultWishes = [
                     { name: "Priya & Rahul", message: "Wishing you a lifetime of love and happiness. Can't wait for the big day!", date: new Date().toLocaleDateString() },
@@ -1259,7 +1287,6 @@
             setTimeout(() => modal.classList.add('hidden'), 400);
         }
 
-        // Backend Tabs Switcher
         function switchAdminTab(tabName) {
             const tabs = ['invites', 'rsvps', 'guestbook', 'live'];
             tabs.forEach(t => {
@@ -1456,7 +1483,6 @@
 
         // Backend: Live Event Controls
         function updateLiveStatus(type, item, status) {
-            // Maps the admin dropdown select to the frontend UI logic
             let elId = '';
             let colors = '';
             
@@ -1529,7 +1555,7 @@
             lucide.createIcons({ icons: { 'volume-2': true, 'volume-x': true } });
         }
 
-        // --- 2. Trailer Modal ---
+        // --- Trailer Modal ---
         function openTrailer() {
             const modal = document.getElementById('trailer-modal');
             modal.classList.remove('hidden');
@@ -1541,7 +1567,7 @@
             setTimeout(() => modal.classList.add('hidden'), 500);
         }
 
-        // --- 10. Countdown Timer ---
+        // --- Countdown Timer ---
         function updateCountdown() {
             const now = new Date().getTime();
             const distance = WEDDING_DATE - now;
@@ -1556,15 +1582,13 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // --- Accordion Logic (Timeline & FAQ) ---
+        // --- Accordion Logic ---
         function toggleAccordion(id) {
             const content = document.getElementById(`content-${id}`);
             const icon = document.getElementById(`icon-${id}`);
             
-            // Check if it's already open
             if (content.classList.contains('open')) {
                 content.classList.remove('open');
-                // Reset rotation based on type (chevron for FAQ, plus for timeline)
                 if (id.startsWith('faq')) {
                     icon.style.transform = 'rotate(0deg)';
                 } else {
@@ -1572,8 +1596,7 @@
                     icon.setAttribute('data-lucide', 'plus');
                 }
             } else {
-                // If it's a timeline, close other timelines. If it's a FAQ, close other FAQs
-                const groupPrefix = id.split('-')[0]; // 'event' or 'faq'
+                const groupPrefix = id.split('-')[0]; 
                 
                 document.querySelectorAll(`[id^="content-${groupPrefix}-"].open`).forEach(el => {
                     el.classList.remove('open');
@@ -1584,7 +1607,6 @@
                     if(groupPrefix === 'event') el.setAttribute('data-lucide', 'plus');
                 });
                 
-                // Open clicked
                 content.classList.add('open');
                 icon.style.transform = 'rotate(180deg)';
                 if(groupPrefix === 'event') {
@@ -1666,11 +1688,10 @@
 
         initStory();
 
-        // --- RSVP Submission (Saving to LocalStorage) ---
+        // --- NEW: Upgraded RSVP UI Swap ---
         function submitRSVP(e) {
             e.preventDefault();
             const btn = document.getElementById('rsvp-submit-btn');
-            const originalHTML = btn.innerHTML;
             
             const rsvpData = {
                 name: document.getElementById('rsvp-name').value,
@@ -1690,21 +1711,19 @@
                 existingRSVPs.unshift(rsvpData);
                 localStorage.setItem('weddingRSVPs', JSON.stringify(existingRSVPs));
 
-                btn.innerHTML = '<i data-lucide="check" class="w-4 h-4 md:w-5 md:h-5"></i> RSVP Confirmed';
-                btn.classList.add('bg-green-600', 'hover:bg-green-700', 'border-green-600');
-                lucide.createIcons();
-                e.target.reset();
+                // Transform the UI seamlessly
+                document.getElementById('rsvp-form').style.opacity = '0';
                 
                 setTimeout(() => {
-                    btn.innerHTML = originalHTML;
-                    btn.classList.remove('bg-green-600', 'hover:bg-green-700', 'border-green-600');
-                    lucide.createIcons();
-                    showCustomAlert('RSVP Received!', 'Thank you! We have securely received your response. We can\'t wait to celebrate with you.', 'mail-check');
-                }, 1500);
+                    document.getElementById('rsvp-form').classList.add('hidden');
+                    const successCard = document.getElementById('rsvp-success-card');
+                    successCard.classList.remove('hidden');
+                }, 300);
+
             }, 1500);
         }
 
-        // --- Wish Modal & Guestbook logic (Saving to LocalStorage) ---
+        // --- Wish Modal & Guestbook logic ---
         function renderGuestbook() {
             const container = document.getElementById('guestbook-container');
             const wishes = JSON.parse(localStorage.getItem('weddingWishes') || '[]');
@@ -1753,7 +1772,7 @@
             wishes.unshift({ name, message, date: new Date().toLocaleDateString() });
             localStorage.setItem('weddingWishes', JSON.stringify(wishes));
 
-            renderGuestbook(); // Re-render frontend
+            renderGuestbook(); 
             document.getElementById('guestbook-container').scrollTo({ left: 0, behavior: 'smooth' });
 
             const btn = document.getElementById('wish-submit-btn');
@@ -1767,21 +1786,25 @@
             }, 1000);
         }
 
-        // --- 9. AI Assistant ---
+        // --- NEW: Advanced 9. AI Assistant (Nyota) ---
         let chatOpen = false;
         function toggleChat() {
             const container = document.getElementById('ai-chat-container');
             const windowEl = document.getElementById('chat-window');
+            const fab = document.getElementById('ai-fab');
             
             if(!chatOpen) {
                 container.classList.remove('hidden');
+                fab.style.transform = 'scale(0)';
                 setTimeout(() => {
                     windowEl.classList.remove('scale-95', 'opacity-0');
                     windowEl.classList.add('scale-100', 'opacity-100');
+                    document.getElementById('chat-messages').scrollTop = document.getElementById('chat-messages').scrollHeight;
                 }, 10);
             } else {
                 windowEl.classList.remove('scale-100', 'opacity-100');
                 windowEl.classList.add('scale-95', 'opacity-0');
+                fab.style.transform = 'scale(1)';
                 setTimeout(() => {
                     container.classList.add('hidden');
                 }, 300);
@@ -1793,25 +1816,52 @@
             if(e.key === 'Enter') sendMessage();
         }
 
+        function sendSuggested(text) {
+            document.getElementById('chat-input').value = text;
+            sendMessage();
+        }
+
+        // Advanced scoring logic for AI
         const knowledgeBase = [
-            { keywords: ['time', 'dinner', 'food', 'eat', 'hungry'], response: "Dinner is served after the Ceremony, starting at 9:00 PM on Feb 7th. The Punjabi and Chinese counters are currently OPEN! 🍽️" },
-            { keywords: ['sangeet', 'music', 'dance', 'party'], response: "The Sangeet is at the Crystal Ballroom on Feb 6th at 8:00 PM. Get ready to dance! 💃🕺" },
-            { keywords: ['dress', 'wear', 'attire', 'clothes', 'outfit'], response: "For the Wedding Ceremony, the dress code is Traditional Royal. For the Sangeet, it is Indo-Western Glitz, and for Mehndi, wear Green & Yellow! ✨" },
-            { keywords: ['parking', 'car', 'drive', 'park', 'vehicle'], response: "Parking A (VIP) is currently available. Valet is full. You can click 'Open Map' in the Parking section for directions! 🚗" },
-            { keywords: ['location', 'venue', 'map', 'where', 'place'], response: "The main Wedding is at Heritage Palace. Sangeet is at Crystal Ballroom, and Mehndi is at The Royal Gardens. 📍" },
-            { keywords: ['gift', 'registry', 'present', 'fund', 'contribute'], response: "Your presence is our present! But if you wish to contribute, you can find our Honeymoon Fund and Home Essentials registry below the gallery. 🎁" },
-            { keywords: ['rsvp', 'attend', 'yes', 'no', 'confirm'], response: "You can confirm your attendance using the RSVP form just above the Gallery section. Please respond by Jan 15th! 💌" },
-            { keywords: ['hi', 'hello', 'hey', 'greetings'], response: "Hello there! I am so delighted to help you with the wedding details today! ✨" }
+            { tags: ['time', 'when', 'schedule', 'start', 'late'], answer: "The festivities begin on Feb 5th at 4:00 PM with the Mehndi. The main Wedding Ceremony is on Feb 7th at 9:00 PM." },
+            { tags: ['dinner', 'food', 'eat', 'menu', 'menu', 'catering'], answer: "Dinner will be a grand feast! The Punjabi and Chinese counters are currently open. Gujarati Thali opens shortly after." },
+            { tags: ['sangeet', 'dance', 'music', 'party', 'perform'], answer: "The Sangeet is going to be a spectacular night of dance and music at the Crystal Ballroom on Feb 6th at 8:00 PM." },
+            { tags: ['dress', 'wear', 'clothes', 'attire', 'theme', 'color'], answer: "For Mehndi: Green & Yellow. For Sangeet: Indo-Western Glitz. For the Wedding: Traditional Royal. Check the 'Style Guide' section for moodboards!" },
+            { tags: ['parking', 'park', 'car', 'valet', 'drive'], answer: "We have Smart Parking available. VIP is Parking A, Guests in B, and Valet in C. Currently, Parking A is available!" },
+            { tags: ['location', 'venue', 'map', 'where', 'address', 'navigate'], answer: "Mehndi is at The Royal Gardens, Sangeet at Crystal Ballroom, and the Wedding at Heritage Palace. You can use the 'View Map' or 'Book Uber' buttons in the timeline!" },
+            { tags: ['gift', 'registry', 'present', 'buy', 'honeymoon'], answer: "Your presence is our biggest present! However, if you wish to bless us, you can use the Secure Registry at the bottom of the page." },
+            { tags: ['rsvp', 'attend', 'confirm', 'going', 'reply'], answer: "You can securely confirm your attendance using the digital RSVP form above the Gallery. Please let us know by Jan 15th!" },
+            { tags: ['uber', 'cab', 'taxi', 'ride', 'transport'], answer: "You can directly book an Uber to any of our venues by clicking the black 'Book Uber' button on the event timeline!" },
+            { tags: ['hotel', 'stay', 'sleep', 'accommodation', 'room'], answer: "Rooms are pre-booked at the Taj Palace Hotel. Shuttles run every 2 hours from the airport." }
         ];
 
         function getBotResponse(input) {
             const lowerInput = input.toLowerCase();
+            let bestMatch = null;
+            let maxScore = 0;
+
             for (const entry of knowledgeBase) {
-                if (entry.keywords.some(kw => lowerInput.includes(kw))) {
-                    return entry.response;
+                let score = 0;
+                for (const tag of entry.tags) {
+                    if (lowerInput.includes(tag)) score++;
+                }
+                if (score > maxScore) {
+                    maxScore = score;
+                    bestMatch = entry;
                 }
             }
-            return "I am not quite sure about that! I can help you with the timeline, venues, dress codes, RSVP, food status, or registry.";
+
+            if (maxScore > 0) return bestMatch.answer;
+            
+            // conversational fallbacks
+            if (lowerInput.includes('hi') || lowerInput.includes('hello') || lowerInput.includes('hey')) {
+                return `Hello ${currentGuestName}! How can I make your wedding experience smoother today?`;
+            }
+            if (lowerInput.includes('thank')) {
+                return "You're very welcome! Let me know if you need anything else.";
+            }
+
+            return "That's a great question! While I don't have that exact detail, you can easily reach our Hospitality Desk at +1234567890 for personalized help.";
         }
 
         function sendMessage() {
@@ -1822,14 +1872,21 @@
             appendMessage(text, 'user');
             input.value = '';
 
+            // Hide suggestions once chatting starts to clear up space
+            document.getElementById('suggested-prompts').classList.add('hidden');
+
             const typingInd = document.getElementById('typing-indicator');
             typingInd.classList.remove('hidden');
+            
+            // Scroll to bottom
+            const chatBox = document.getElementById('chat-messages');
+            setTimeout(() => chatBox.scrollTop = chatBox.scrollHeight, 50);
 
             setTimeout(() => {
                 typingInd.classList.add('hidden');
                 const response = getBotResponse(text);
                 appendMessage(response, 'bot');
-            }, 1000 + Math.random() * 800);
+            }, 1200 + Math.random() * 800); // Realistic dynamic delay
         }
 
         function appendMessage(text, sender) {
@@ -1857,14 +1914,11 @@
             window.open(url, '_blank');
         }
 
-        // Uber Deep Link Generator
         function openUber(destination) {
-            // This deep link will open the Uber App with the destination pre-filled
             const url = `https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=${encodeURIComponent(destination)}`;
             window.open(url, '_blank');
         }
 
-        // Google Calendar Generator
         function addToCalendar(title, startDateStr, location) {
             const endDateStr = (parseInt(startDateStr.substring(0,8)) + 1).toString() + "T000000"; 
             const details = "We can't wait to celebrate with you! - Aarav & Kiara";
