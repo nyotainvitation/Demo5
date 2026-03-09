@@ -1,0 +1,1947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aarav & Kiara | Wedding Invitation</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                        display: ['Cinzel', 'serif'],
+                    },
+                    colors: {
+                        cream: {
+                            50: '#FFFEFC',
+                            100: '#FCFBF8',
+                            200: '#F5F2EB',
+                            300: '#E8E1D5',
+                            800: '#3B332B',
+                            900: '#2C241B',
+                        },
+                        gold: {
+                            400: '#D4B886',
+                            500: '#B59461',
+                            600: '#8C7046',
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards',
+                        'float': 'float 4s ease-in-out infinite',
+                        'pop-in': 'popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        popIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Smooth Global Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Smooth transitions for accordions */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.5s ease-in-out;
+        }
+        .accordion-content.open {
+            max-height: 800px;
+            padding-bottom: 1.5rem;
+            padding-top: 0.5rem;
+        }
+
+        /* Scroll Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Modal Animations */
+        .custom-modal-box {
+            transform: scale(0.95) translateY(10px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .custom-modal-overlay.open .custom-modal-box {
+            transform: scale(1) translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-cream-100 text-cream-800 font-sans antialiased selection:bg-gold-500/20">
+
+    <!-- 1️⃣ Personalized Entry Experience -->
+    <div id="intro-screen" class="fixed inset-0 z-[100] bg-cream-50 flex items-center justify-center overflow-hidden transition-all duration-1000">
+        <div class="absolute inset-4 md:inset-8 border border-gold-400/30 rounded-2xl pointer-events-none"></div>
+
+        <div id="intro-content" class="relative z-20 flex flex-col items-center text-center px-6 md:px-12 transition-opacity duration-700 animate-fade-in-up max-w-4xl mx-auto">
+            <i data-lucide="flower-2" class="w-10 h-10 md:w-14 md:h-14 text-gold-500 mb-6 animate-float"></i>
+            <p class="text-gold-600 tracking-[0.3em] md:tracking-[0.4em] text-xs md:text-sm uppercase mb-3 font-semibold">✨ Welcome ✨</p>
+            
+            <h1 id="guest-name-display" class="text-3xl md:text-5xl lg:text-6xl font-serif text-cream-900 mb-4 md:mb-6 italic px-4 drop-shadow-sm">
+                Our Honored Guest
+            </h1>
+            
+            <p id="guest-personalized-msg" class="text-cream-800/70 text-sm md:text-lg font-medium tracking-wide mb-10 md:mb-14 leading-relaxed px-4 md:px-12">
+                You are warmly invited to celebrate the union of
+            </p>
+
+            <h2 class="text-5xl md:text-7xl lg:text-8xl font-display text-gold-500 mb-12 md:mb-16 tracking-wider">
+                Aarav <span class="text-3xl md:text-5xl mx-2 md:mx-4 font-serif italic text-cream-400">&</span> Kiara
+            </h2>
+            
+            <button onclick="enterApp()" class="group relative px-10 md:px-14 py-4 md:py-5 bg-white overflow-hidden rounded-none border border-gold-500/50 text-gold-600 transition-all hover:bg-gold-500 hover:text-white shadow-[0_4px_20px_rgba(181,148,97,0.15)] hover:shadow-[0_8px_30px_rgba(181,148,97,0.3)]">
+                <span class="relative z-10 font-sans tracking-[0.2em] md:tracking-[0.3em] uppercase text-xs md:text-sm flex items-center gap-3">
+                    Enter the Wedding <i data-lucide="chevron-right" class="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-2 transition-transform"></i>
+                </span>
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN APP CONTAINER -->
+    <div id="main-app" class="w-full bg-cream-50 min-h-screen shadow-2xl overflow-x-hidden relative opacity-0 transition-opacity duration-1000 hidden">
+        
+        <audio id="bg-music" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
+
+        <button onclick="toggleMusic()" class="fixed top-4 right-4 md:top-8 md:right-8 z-50 p-3 md:p-4 bg-white/80 backdrop-blur-md rounded-full border border-gold-400/30 text-gold-600 shadow-lg transition-transform hover:scale-110">
+            <i id="music-icon" data-lucide="volume-2" class="w-4 h-4 md:w-5 md:h-5"></i>
+        </button>
+
+        <!-- 🎥 Hero & Cinematic Trailer -->
+        <section class="relative h-[80vh] md:h-[90vh] w-full bg-cream-200 flex items-end">
+            <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=2000&auto=format&fit=crop" alt="Couple" class="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-multiply sepia-[.2]" style="object-position: center 20%;">
+            <div class="absolute inset-0 bg-gradient-to-t from-cream-50 via-cream-50/40 to-black/20 md:via-cream-50/20 pointer-events-none"></div>
+            
+            <div class="relative z-10 w-full p-8 pb-16 md:pb-24 flex flex-col items-center text-center reveal">
+                <p class="text-cream-900/90 tracking-[0.3em] md:tracking-[0.5em] uppercase text-[10px] md:text-sm mb-4 md:mb-6 font-semibold">Join us to celebrate</p>
+                <h1 class="text-6xl md:text-8xl lg:text-9xl font-serif text-cream-900 mb-8 md:mb-12 italic drop-shadow-sm leading-tight">Aarav <br class="md:hidden"><span class="text-4xl md:text-7xl">&</span> Kiara</h1>
+                
+                <div class="flex flex-col md:flex-row gap-4 md:gap-6">
+                    <button onclick="openTrailer()" class="flex items-center justify-center gap-3 md:gap-4 bg-white/90 backdrop-blur-sm border border-gold-500/30 text-gold-600 px-8 py-3 md:px-10 md:py-4 rounded-full uppercase tracking-widest text-xs md:text-sm hover:bg-gold-500 hover:text-white transition-all shadow-lg hover:shadow-gold-500/40 hover:scale-105">
+                        <i data-lucide="play" class="w-4 h-4 md:w-5 md:h-5 fill-current"></i> Play Trailer
+                    </button>
+                    <button onclick="showCustomAlert('Live Stream', 'The live stream will begin here on February 7th at 9:00 PM. We can\'t wait for you to join us virtually!', 'video')" class="flex items-center justify-center gap-3 md:gap-4 bg-transparent backdrop-blur-sm border border-white/50 text-white px-8 py-3 md:px-10 md:py-4 rounded-full uppercase tracking-widest text-xs md:text-sm hover:bg-white hover:text-cream-900 transition-all shadow-lg hover:scale-105">
+                        <i data-lucide="video" class="w-4 h-4 md:w-5 md:h-5"></i> Watch Live
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🎉 Interactive Countdown -->
+        <div class="relative -mt-10 md:-mt-16 mx-6 md:mx-auto max-w-5xl z-20 bg-white/95 backdrop-blur-xl border border-gold-400/20 rounded-xl md:rounded-2xl p-6 md:p-10 shadow-xl flex justify-between md:justify-around text-center reveal">
+            <div class="flex flex-col items-center w-1/4">
+                <span id="cd-days" class="text-3xl md:text-5xl lg:text-6xl font-display text-gold-500">00</span>
+                <span class="text-[9px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.3em] text-cream-800/60 mt-2 md:mt-3">Days</span>
+            </div>
+            <div class="w-[1px] h-10 md:h-16 bg-gold-400/20 self-center"></div>
+            <div class="flex flex-col items-center w-1/4">
+                <span id="cd-hours" class="text-3xl md:text-5xl lg:text-6xl font-display text-gold-500">00</span>
+                <span class="text-[9px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.3em] text-cream-800/60 mt-2 md:mt-3">Hours</span>
+            </div>
+            <div class="w-[1px] h-10 md:h-16 bg-gold-400/20 self-center"></div>
+            <div class="flex flex-col items-center w-1/4">
+                <span id="cd-minutes" class="text-3xl md:text-5xl lg:text-6xl font-display text-gold-500">00</span>
+                <span class="text-[9px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.3em] text-cream-800/60 mt-2 md:mt-3">Mins</span>
+            </div>
+            <div class="w-[1px] h-10 md:h-16 bg-gold-400/20 self-center"></div>
+            <div class="flex flex-col items-center w-1/4">
+                <span id="cd-seconds" class="text-3xl md:text-5xl lg:text-6xl font-display text-gold-500">00</span>
+                <span class="text-[9px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.3em] text-cream-800/60 mt-2 md:mt-3">Secs</span>
+            </div>
+        </div>
+
+        <div class="px-6 md:px-16 lg:px-24 space-y-20 md:space-y-32 py-16 md:py-24 w-full">
+            
+            <!-- 💎 Premium Storybook Mode -->
+            <section class="max-w-6xl mx-auto relative px-2 md:px-4 reveal">
+                <div class="text-center mb-12 md:mb-16">
+                    <h3 class="text-4xl md:text-5xl font-serif text-cream-900 italic">Our Journey</h3>
+                    <p class="text-gold-600 tracking-widest text-[10px] md:text-xs uppercase mt-3 md:mt-4 font-semibold">How it all began</p>
+                </div>
+
+                <div class="relative bg-white border border-cream-200 p-6 md:p-12 lg:p-16 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.03)] flex flex-col md:flex-row items-center gap-8 md:gap-16 lg:gap-24">
+                    <div class="w-full md:w-1/2 relative">
+                        <div class="absolute inset-0 border border-gold-400/30 translate-x-3 translate-y-3 md:translate-x-5 md:translate-y-5 rounded-xl"></div>
+                        <div class="relative overflow-hidden rounded-xl aspect-[4/5] md:aspect-[3/4] group bg-cream-100">
+                            <img id="story-img" src="" alt="Story" class="w-full h-full object-cover sepia-[.15] transition-all duration-700 group-hover:scale-105 group-hover:sepia-0">
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 text-center md:text-left flex flex-col justify-center">
+                        <span id="story-chapter" class="text-gold-500 tracking-[0.3em] uppercase text-[10px] md:text-xs font-bold mb-3 block transition-opacity duration-300">Chapter I</span>
+                        <h4 id="story-title" class="text-3xl md:text-4xl lg:text-5xl font-serif text-cream-900 italic mb-6 transition-all duration-300">The First Glance</h4>
+                        <p id="story-desc" class="text-cream-800/70 font-medium leading-relaxed text-sm md:text-lg mb-10 transition-all duration-300"></p>
+
+                        <div class="flex items-center justify-center md:justify-start gap-6">
+                            <button onclick="prevStory()" class="w-12 h-12 md:w-14 md:h-14 rounded-full border border-cream-200 flex items-center justify-center text-gold-600 hover:bg-gold-50 hover:border-gold-300 transition-all group shadow-sm hover:shadow-md">
+                                <i data-lucide="arrow-left" class="w-4 h-4 md:w-5 md:h-5 group-hover:-translate-x-1 transition-transform"></i>
+                            </button>
+                            <div class="flex gap-2" id="story-indicators"></div>
+                            <button onclick="nextStory()" class="w-12 h-12 md:w-14 md:h-14 rounded-full border border-cream-200 flex items-center justify-center text-gold-600 hover:bg-gold-50 hover:border-gold-300 transition-all group shadow-sm hover:shadow-md">
+                                <i data-lucide="arrow-right" class="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 📍 Smart Wedding Timeline -->
+            <section class="max-w-5xl mx-auto reveal">
+                <div class="text-center mb-10 md:mb-16">
+                    <h3 class="text-4xl md:text-5xl font-serif text-cream-900 italic">The Events</h3>
+                    <p class="text-gold-600 tracking-widest text-[10px] md:text-xs uppercase mt-3 md:mt-4 font-semibold">Join us in our celebrations</p>
+                </div>
+                
+                <div class="space-y-4 md:space-y-6">
+                    <!-- Event 1 -->
+                    <div class="bg-white rounded-xl shadow-[0_4px_15px_rgba(0,0,0,0.03)] border border-cream-200 overflow-hidden transition-all duration-300 hover:shadow-[0_8px_25px_rgba(181,148,97,0.15)] group" onclick="toggleAccordion('event-1')">
+                        <div class="p-5 md:p-8 flex items-center justify-between cursor-pointer">
+                            <div class="flex gap-5 md:gap-8 items-center">
+                                <div class="text-center min-w-[50px] md:min-w-[80px] border-r border-cream-200 pr-4 md:pr-8 group-hover:border-gold-300 transition-colors">
+                                    <span class="block text-2xl md:text-4xl font-display text-gold-500">05</span>
+                                    <span class="block text-[10px] md:text-xs font-semibold tracking-widest uppercase text-cream-800 mt-1">Feb</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl md:text-3xl font-serif italic text-cream-900 mb-1">Mehndi</h4>
+                                    <p class="text-xs md:text-sm text-cream-800/60 flex items-center gap-1.5 font-medium">
+                                        <i data-lucide="clock" class="w-3 h-3 md:w-4 md:h-4 text-gold-400"></i> 4:00 PM
+                                    </p>
+                                </div>
+                            </div>
+                            <i id="icon-event-1" data-lucide="plus" class="w-4 h-4 md:w-6 md:h-6 text-gold-400 transition-transform duration-300"></i>
+                        </div>
+                        <div id="content-event-1" class="accordion-content px-5 md:px-8 bg-cream-50/50">
+                            <div class="space-y-4 md:space-y-6 border-t border-cream-200 pt-4 md:pt-6">
+                                <div class="flex items-start gap-3 md:gap-4">
+                                    <i data-lucide="map-pin" class="w-4 h-4 md:w-5 md:h-5 text-gold-500 mt-0.5 md:mt-1"></i>
+                                    <div>
+                                        <p class="text-sm md:text-base text-cream-900 font-medium mb-1">The Royal Gardens</p>
+                                        <button onclick="openMap('The Royal Gardens, Wedding Venue')" class="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-gold-600 hover:text-gold-500 transition-colors">View Map</button>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3 md:gap-4">
+                                    <i data-lucide="info" class="w-4 h-4 md:w-5 md:h-5 text-gold-500 mt-0.5 md:mt-1"></i>
+                                    <div>
+                                        <p class="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-gold-600 mb-1">Dress Code</p>
+                                        <p class="text-sm md:text-base text-cream-900 font-medium">Green & Yellow Hues</p>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4 md:mt-6">
+                                    <button onclick="addToCalendar('Mehndi Ceremony - Aarav & Kiara', '20260205T160000', 'The Royal Gardens')" class="w-full py-3 md:py-4 bg-white hover:bg-cream-100 text-xs md:text-sm text-gold-600 font-semibold tracking-widest uppercase border border-gold-400/30 transition-colors flex justify-center items-center gap-2 rounded-lg">
+                                        <i data-lucide="calendar" class="w-4 h-4 md:w-5 md:h-5"></i> Add to Calendar
+                                    </button>
+                                    <button onclick="openUber('The Royal Gardens, Wedding Venue')" class="w-full py-3 md:py-4 bg-black hover:bg-zinc-800 text-white font-semibold tracking-widest uppercase border border-transparent transition-colors flex justify-center items-center gap-2 rounded-lg shadow-md text-xs md:text-sm">
+                                        <i data-lucide="car" class="w-4 h-4 md:w-5 md:h-5"></i> Book Uber
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event 2 -->
+                    <div class="bg-white rounded-xl shadow-[0_4px_15px_rgba(0,0,0,0.03)] border border-cream-200 overflow-hidden transition-all duration-300 hover:shadow-[0_8px_25px_rgba(181,148,97,0.15)] group" onclick="toggleAccordion('event-2')">
+                        <div class="p-5 md:p-8 flex items-center justify-between cursor-pointer">
+                            <div class="flex gap-5 md:gap-8 items-center">
+                                <div class="text-center min-w-[50px] md:min-w-[80px] border-r border-cream-200 pr-4 md:pr-8 group-hover:border-gold-300 transition-colors">
+                                    <span class="block text-2xl md:text-4xl font-display text-gold-500">06</span>
+                                    <span class="block text-[10px] md:text-xs font-semibold tracking-widest uppercase text-cream-800 mt-1">Feb</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl md:text-3xl font-serif italic text-cream-900 mb-1">Sangeet</h4>
+                                    <p class="text-xs md:text-sm text-cream-800/60 flex items-center gap-1.5 font-medium">
+                                        <i data-lucide="clock" class="w-3 h-3 md:w-4 md:h-4 text-gold-400"></i> 8:00 PM
+                                    </p>
+                                </div>
+                            </div>
+                            <i id="icon-event-2" data-lucide="plus" class="w-4 h-4 md:w-6 md:h-6 text-gold-400 transition-transform duration-300"></i>
+                        </div>
+                        <div id="content-event-2" class="accordion-content px-5 md:px-8 bg-cream-50/50">
+                            <div class="space-y-4 md:space-y-6 border-t border-cream-200 pt-4 md:pt-6">
+                                <div class="flex items-start gap-3 md:gap-4">
+                                    <i data-lucide="map-pin" class="w-4 h-4 md:w-5 md:h-5 text-gold-500 mt-0.5 md:mt-1"></i>
+                                    <div>
+                                        <p class="text-sm md:text-base text-cream-900 font-medium mb-1">Crystal Ballroom</p>
+                                        <button onclick="openMap('Crystal Ballroom')" class="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-gold-600 hover:text-gold-500 transition-colors">View Map</button>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3 md:gap-4">
+                                    <i data-lucide="info" class="w-4 h-4 md:w-5 md:h-5 text-gold-500 mt-0.5 md:mt-1"></i>
+                                    <div>
+                                        <p class="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-gold-600 mb-1">Dress Code</p>
+                                        <p class="text-sm md:text-base text-cream-900 font-medium">Indo-Western Glitz</p>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4 md:mt-6">
+                                    <button onclick="addToCalendar('Sangeet - Aarav & Kiara', '20260206T200000', 'Crystal Ballroom')" class="w-full py-3 md:py-4 bg-white hover:bg-cream-100 text-xs md:text-sm text-gold-600 font-semibold tracking-widest uppercase border border-gold-400/30 transition-colors flex justify-center items-center gap-2 rounded-lg">
+                                        <i data-lucide="calendar" class="w-4 h-4 md:w-5 md:h-5"></i> Add to Calendar
+                                    </button>
+                                    <button onclick="openUber('Crystal Ballroom')" class="w-full py-3 md:py-4 bg-black hover:bg-zinc-800 text-white font-semibold tracking-widest uppercase border border-transparent transition-colors flex justify-center items-center gap-2 rounded-lg shadow-md text-xs md:text-sm">
+                                        <i data-lucide="car" class="w-4 h-4 md:w-5 md:h-5"></i> Book Uber
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event 3 -->
+                    <div class="bg-white rounded-xl shadow-[0_4px_15px_rgba(0,0,0,0.03)] border border-cream-200 overflow-hidden transition-all duration-300 hover:shadow-[0_8px_25px_rgba(181,148,97,0.15)] group" onclick="toggleAccordion('event-3')">
+                        <div class="p-5 md:p-8 flex items-center justify-between cursor-pointer">
+                            <div class="flex gap-5 md:gap-8 items-center">
+                                <div class="text-center min-w-[50px] md:min-w-[80px] border-r border-cream-200 pr-4 md:pr-8 group-hover:border-gold-300 transition-colors">
+                                    <span class="block text-2xl md:text-4xl font-display text-gold-500">07</span>
+                                    <span class="block text-[10px] md:text-xs font-semibold tracking-widest uppercase text-cream-800 mt-1">Feb</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl md:text-3xl font-serif italic text-cream-900 mb-1">Wedding Ceremony</h4>
+                                    <p class="text-xs md:text-sm text-cream-800/60 flex items-center gap-1.5 font-medium">
+                                        <i data-lucide="clock" class="w-3 h-3 md:w-4 md:h-4 text-gold-400"></i> 9:00 PM
+                                    </p>
+                                </div>
+                            </div>
+                            <i id="icon-event-3" data-lucide="plus" class="w-4 h-4 md:w-6 md:h-6 text-gold-400 transition-transform duration-300"></i>
+                        </div>
+                        <div id="content-event-3" class="accordion-content px-5 md:px-8 bg-cream-50/50">
+                            <div class="space-y-4 md:space-y-6 border-t border-cream-200 pt-4 md:pt-6">
+                                <div class="flex items-start gap-3 md:gap-4">
+                                    <i data-lucide="map-pin" class="w-4 h-4 md:w-5 md:h-5 text-gold-500 mt-0.5 md:mt-1"></i>
+                                    <div>
+                                        <p class="text-sm md:text-base text-cream-900 font-medium mb-1">Heritage Palace</p>
+                                        <button onclick="openMap('Heritage Palace')" class="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-gold-600 hover:text-gold-500 transition-colors">View Map</button>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3 md:gap-4">
+                                    <i data-lucide="info" class="w-4 h-4 md:w-5 md:h-5 text-gold-500 mt-0.5 md:mt-1"></i>
+                                    <div>
+                                        <p class="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-gold-600 mb-1">Dress Code</p>
+                                        <p class="text-sm md:text-base text-cream-900 font-medium">Traditional Royal</p>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4 md:mt-6">
+                                    <button onclick="addToCalendar('Wedding Ceremony - Aarav & Kiara', '20260207T210000', 'Heritage Palace')" class="w-full py-3 md:py-4 bg-white hover:bg-cream-100 text-xs md:text-sm text-gold-600 font-semibold tracking-widest uppercase border border-gold-400/30 transition-colors flex justify-center items-center gap-2 rounded-lg">
+                                        <i data-lucide="calendar" class="w-4 h-4 md:w-5 md:h-5"></i> Add to Calendar
+                                    </button>
+                                    <button onclick="openUber('Heritage Palace')" class="w-full py-3 md:py-4 bg-black hover:bg-zinc-800 text-white font-semibold tracking-widest uppercase border border-transparent transition-colors flex justify-center items-center gap-2 rounded-lg shadow-md text-xs md:text-sm">
+                                        <i data-lucide="car" class="w-4 h-4 md:w-5 md:h-5"></i> Book Uber
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 👗 Dress Code Inspiration Moodboard -->
+            <section class="max-w-7xl mx-auto reveal pt-10">
+                <div class="text-center mb-10 md:mb-14">
+                    <h3 class="text-4xl md:text-5xl font-serif text-cream-900 italic">Style Guide</h3>
+                    <p class="text-gold-600 tracking-widest text-[10px] md:text-xs uppercase mt-3 font-semibold">Curated Looks for the Festivities</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                    <!-- Mehndi -->
+                    <div class="bg-white rounded-2xl shadow-md border border-cream-200 overflow-hidden group">
+                        <div class="h-48 md:h-64 w-full overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1621689255677-2f6448ab82ea?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Mehndi Style">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                            <h4 class="absolute bottom-4 left-6 text-white font-serif text-2xl italic drop-shadow-md">Mehndi</h4>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-sm font-semibold text-cream-900 mb-2">Vibrant & Playful</p>
+                            <p class="text-xs text-cream-800/70 leading-relaxed mb-4">Embrace the joy with bright yellows, fresh greens, and lively pastels. Comfortable silhouettes are encouraged.</p>
+                            <div class="flex gap-2">
+                                <div class="w-6 h-6 rounded-full bg-[#FBBF24] shadow-inner border border-black/5"></div>
+                                <div class="w-6 h-6 rounded-full bg-[#34D399] shadow-inner border border-black/5"></div>
+                                <div class="w-6 h-6 rounded-full bg-[#F472B6] shadow-inner border border-black/5"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sangeet -->
+                    <div class="bg-white rounded-2xl shadow-md border border-cream-200 overflow-hidden group">
+                        <div class="h-48 md:h-64 w-full overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1541334865882-7774bc057f92?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Sangeet Style">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                            <h4 class="absolute bottom-4 left-6 text-white font-serif text-2xl italic drop-shadow-md">Sangeet</h4>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-sm font-semibold text-cream-900 mb-2">Indo-Western Glitz</p>
+                            <p class="text-xs text-cream-800/70 leading-relaxed mb-4">Time to shine! Think sequins, deep jewel tones, midnight blues, and glamorous fusion wear ready for dancing.</p>
+                            <div class="flex gap-2">
+                                <div class="w-6 h-6 rounded-full bg-[#1E3A8A] shadow-inner border border-black/5"></div>
+                                <div class="w-6 h-6 rounded-full bg-[#831843] shadow-inner border border-black/5"></div>
+                                <div class="w-6 h-6 rounded-full bg-[#0F172A] shadow-inner border border-black/5"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wedding -->
+                    <div class="bg-white rounded-2xl shadow-md border border-cream-200 overflow-hidden group">
+                        <div class="h-48 md:h-64 w-full overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Wedding Style">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                            <h4 class="absolute bottom-4 left-6 text-white font-serif text-2xl italic drop-shadow-md">Ceremony</h4>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-sm font-semibold text-cream-900 mb-2">Traditional Royal</p>
+                            <p class="text-xs text-cream-800/70 leading-relaxed mb-4">Elegant traditional attire in soft creams, champagne gold, and muted blushes to match the regal ambiance.</p>
+                            <div class="flex gap-2">
+                                <div class="w-6 h-6 rounded-full bg-[#FDFBF7] shadow-inner border border-black/10"></div>
+                                <div class="w-6 h-6 rounded-full bg-[#D4B886] shadow-inner border border-black/5"></div>
+                                <div class="w-6 h-6 rounded-full bg-[#FCE7F3] shadow-inner border border-black/5"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ✈️ Travel & Concierge -->
+            <section class="max-w-5xl mx-auto reveal pt-10">
+                <div class="text-center mb-10 md:mb-14">
+                    <h3 class="text-4xl md:text-5xl font-serif text-cream-900 italic">Travel & Stay</h3>
+                    <p class="text-gold-600 tracking-widest text-[10px] md:text-xs uppercase mt-3 font-semibold">Your Comfort is our priority</p>
+                </div>
+                
+                <div class="bg-white border border-cream-200 rounded-2xl p-6 md:p-10 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
+                    <div class="w-full md:w-1/3 flex flex-col items-center text-center border-b md:border-b-0 md:border-r border-cream-100 pb-8 md:pb-0 md:pr-8">
+                        <div class="w-16 h-16 rounded-full bg-cream-50 flex items-center justify-center mb-4 text-gold-500 border border-cream-200">
+                            <i data-lucide="hotel" class="w-8 h-8"></i>
+                        </div>
+                        <h4 class="font-bold text-cream-900 mb-2 uppercase tracking-widest text-xs">Accommodation</h4>
+                        <p class="text-xs text-cream-800/70 leading-relaxed mb-4">Rooms have been pre-booked for out-of-town guests at the <strong>Taj Palace Hotel</strong> under the "Aarav-Kiara Wedding" block.</p>
+                        <button onclick="openMap('Taj Palace Hotel')" class="text-[10px] uppercase font-bold tracking-widest text-gold-600 hover:text-gold-500 flex items-center justify-center gap-1 w-full transition-colors">
+                            View Hotel <i data-lucide="external-link" class="w-3 h-3"></i>
+                        </button>
+                    </div>
+
+                    <div class="w-full md:w-1/3 flex flex-col items-center text-center border-b md:border-b-0 md:border-r border-cream-100 pb-8 md:pb-0 md:pr-8">
+                        <div class="w-16 h-16 rounded-full bg-cream-50 flex items-center justify-center mb-4 text-gold-500 border border-cream-200">
+                            <i data-lucide="plane-landing" class="w-8 h-8"></i>
+                        </div>
+                        <h4 class="font-bold text-cream-900 mb-2 uppercase tracking-widest text-xs">Arrivals</h4>
+                        <p class="text-xs text-cream-800/70 leading-relaxed mb-4">Complimentary shuttles will run from the International Airport to the hotel every 2 hours on Feb 4th and 5th.</p>
+                        <button onclick="showCustomAlert('Shuttle Schedule', 'Shuttles run at 10 AM, 12 PM, 2 PM, 4 PM, and 6 PM from Terminal 2.', 'clock')" class="text-[10px] uppercase font-bold tracking-widest text-gold-600 hover:text-gold-500 flex items-center justify-center gap-1 w-full transition-colors">
+                            View Schedule <i data-lucide="calendar-clock" class="w-3 h-3"></i>
+                        </button>
+                    </div>
+
+                    <div class="w-full md:w-1/3 flex flex-col items-center text-center">
+                        <div class="w-16 h-16 rounded-full bg-cream-50 flex items-center justify-center mb-4 text-gold-500 border border-cream-200">
+                            <i data-lucide="phone-call" class="w-8 h-8"></i>
+                        </div>
+                        <h4 class="font-bold text-cream-900 mb-2 uppercase tracking-widest text-xs">Hospitality Desk</h4>
+                        <p class="text-xs text-cream-800/70 leading-relaxed mb-4">Need help with logistics, cabs, or early check-in? Reach out to our dedicated wedding concierge team.</p>
+                        <a href="tel:+1234567890" class="text-[10px] uppercase font-bold tracking-widest text-gold-600 hover:text-gold-500 flex items-center justify-center gap-1 w-full transition-colors">
+                            Call Concierge <i data-lucide="phone" class="w-3 h-3"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 🎵 NEW: Wedding Soundtrack -->
+            <section class="max-w-5xl mx-auto reveal pt-10">
+                <div class="bg-cream-900 rounded-3xl p-6 md:p-10 relative overflow-hidden shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 border border-gold-500/20">
+                    <div class="absolute top-0 left-0 w-32 h-32 bg-gold-500/20 rounded-full blur-[50px] pointer-events-none"></div>
+                    <div class="absolute bottom-0 right-0 w-40 h-40 bg-gold-500/20 rounded-full blur-[60px] pointer-events-none"></div>
+                    
+                    <div class="relative z-10 flex items-center gap-6 text-center md:text-left w-full md:w-auto flex-col md:flex-row">
+                        <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-black border-4 border-cream-800 flex items-center justify-center animate-[spin_4s_linear_infinite] shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+                            <div class="w-6 h-6 rounded-full bg-cream-900 border border-cream-700"></div>
+                        </div>
+                        <div>
+                            <p class="text-gold-500 tracking-[0.3em] text-[10px] md:text-xs font-bold uppercase mb-1">Official Playlist</p>
+                            <h4 class="text-2xl md:text-3xl font-serif italic text-white mb-2">The Wedding Vibe</h4>
+                            <p class="text-xs text-cream-100/70 max-w-xs">Curated tracks to get you in the mood for the celebrations!</p>
+                        </div>
+                    </div>
+                    
+                    <button onclick="showCustomAlert('Spotify Integration', 'This connects directly to our official wedding playlist on Spotify!', 'music')" class="relative z-10 px-8 py-3.5 bg-[#1DB954] hover:bg-[#1ed760] text-black font-bold uppercase tracking-widest text-[10px] md:text-xs rounded-full transition-all shadow-[0_0_15px_rgba(29,185,84,0.3)] hover:scale-105 flex items-center gap-2 whitespace-nowrap">
+                        <i data-lucide="play-circle" class="w-4 h-4 fill-current"></i> Listen on Spotify
+                    </button>
+                </div>
+            </section>
+
+            <!-- ✨ NEW: Social Hashtag Banner -->
+            <section class="max-w-5xl mx-auto reveal pt-10">
+                <div class="bg-gradient-to-r from-cream-100 via-white to-cream-100 border-y border-cream-200 py-10 md:py-14 text-center relative overflow-hidden">
+                    <i data-lucide="instagram" class="absolute -right-4 -top-4 w-32 h-32 text-gold-500/5 rotate-12 pointer-events-none"></i>
+                    <i data-lucide="camera" class="absolute -left-4 -bottom-4 w-24 h-24 text-gold-500/5 -rotate-12 pointer-events-none"></i>
+                    <p class="text-gold-600 tracking-[0.3em] text-[10px] md:text-xs uppercase mb-3 font-semibold relative z-10">Capture The Moments</p>
+                    <h3 class="text-3xl md:text-5xl font-display text-cream-900 tracking-wider mb-4 relative z-10">#AaravWedsKiara</h3>
+                    <p class="text-sm text-cream-800/70 font-medium relative z-10">Please use our hashtag when sharing photos on social media.</p>
+                </div>
+            </section>
+
+            <!-- 2-COLUMN LAYOUT ON DESKTOP (Food & Parking) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-20 max-w-7xl mx-auto pt-10">
+                <!-- 🍽 4️⃣ Live Food Counter Status -->
+                <section class="reveal w-full">
+                    <div class="flex flex-col items-center mb-8 text-center">
+                        <i data-lucide="utensils-crossed" class="w-6 h-6 md:w-8 md:h-8 text-gold-400 mb-3"></i>
+                        <h3 class="text-3xl md:text-4xl font-serif text-cream-900 italic">Live Food Status</h3>
+                    </div>
+                    <div class="space-y-4 md:space-y-5">
+                        <div class="bg-white border border-cream-200 p-4 md:p-6 rounded-xl flex justify-between items-center shadow-sm hover:shadow-md transition-shadow">
+                            <span class="font-medium text-cream-900 md:text-lg">Punjabi Counter</span>
+                            <span id="status-punjabi" class="text-[10px] md:text-xs font-bold tracking-widest uppercase px-4 py-2 bg-[#F0FDF4] text-[#166534] rounded-full border border-[#BBF7D0] transition-colors duration-300">Open</span>
+                        </div>
+                        <div class="bg-white border border-cream-200 p-4 md:p-6 rounded-xl flex justify-between items-center shadow-sm hover:shadow-md transition-shadow">
+                            <span class="font-medium text-cream-900 md:text-lg">Chinese Wok</span>
+                            <span id="status-chinese" class="text-[10px] md:text-xs font-bold tracking-widest uppercase px-4 py-2 bg-[#F0FDF4] text-[#166534] rounded-full border border-[#BBF7D0] transition-colors duration-300">Open</span>
+                        </div>
+                        <div class="bg-white border border-cream-200 p-4 md:p-6 rounded-xl flex justify-between items-center shadow-sm hover:shadow-md transition-shadow">
+                            <span class="font-medium text-cream-900 md:text-lg">Ice Cream Parlour</span>
+                            <span id="status-icecream" class="text-[10px] md:text-xs font-bold tracking-widest uppercase px-4 py-2 bg-[#FEFCE8] text-[#854D0E] rounded-full border border-[#FEF08A] transition-colors duration-300">In 10 Min</span>
+                        </div>
+                        <div class="bg-white border border-cream-200 p-4 md:p-6 rounded-xl flex justify-between items-center shadow-sm hover:shadow-md transition-shadow">
+                            <span class="font-medium text-cream-900 md:text-lg">Gujarati Thali</span>
+                            <span id="status-gujarati" class="text-[10px] md:text-xs font-bold tracking-widest uppercase px-4 py-2 bg-[#FEF2F2] text-[#991B1B] rounded-full border border-[#FECACA] transition-colors duration-300">Closed</span>
+                        </div>
+                    </div>
+                    <p class="text-[10px] md:text-xs uppercase tracking-widest text-cream-800/40 text-center mt-6 md:mt-8 font-semibold">Live Event Controller Synced</p>
+                </section>
+
+                <!-- 🚗 6️⃣ Smart Parking Guide -->
+                <section class="reveal w-full">
+                    <div class="flex flex-col items-center mb-8 text-center">
+                        <i data-lucide="car-front" class="w-6 h-6 md:w-8 md:h-8 text-gold-400 mb-3"></i>
+                        <h3 class="text-3xl md:text-4xl font-serif text-cream-900 italic">Smart Parking</h3>
+                    </div>
+                    <div class="bg-white p-5 md:p-8 lg:p-10 rounded-xl border border-cream-200 shadow-[0_4px_20px_rgba(0,0,0,0.03)] h-[calc(100%-100px)] flex flex-col">
+                        <div class="w-full h-32 md:h-48 lg:h-56 bg-cream-100 rounded-lg mb-6 flex items-center justify-center border border-cream-200 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover opacity-30 sepia-[.3]" alt="Map">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <button onclick="openMap('Wedding Parking Venue')" class="bg-white text-gold-600 px-6 py-2.5 md:py-3 md:px-8 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest flex items-center gap-2 shadow-lg border border-gold-400/20 hover:scale-105 transition-transform">
+                                    <i data-lucide="map" class="w-3 h-3 md:w-4 md:h-4"></i> Open Map
+                                </button>
+                            </div>
+                        </div>
+                        <div class="space-y-5 md:space-y-6 px-2 flex-grow flex flex-col justify-center">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm md:text-base font-medium text-cream-900">Parking A - VIP</span>
+                                <div class="flex items-center gap-2 text-[10px] md:text-xs font-bold uppercase tracking-widest text-cream-900" id="park-a">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-[#22C55E]"></span> Available
+                                </div>
+                            </div>
+                            <div class="h-[1px] w-full bg-cream-100"></div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm md:text-base font-medium text-cream-900">Parking B - Guests</span>
+                                <div class="flex items-center gap-2 text-[10px] md:text-xs font-bold uppercase tracking-widest text-cream-900" id="park-b">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-[#EAB308]"></span> Filling Fast
+                                </div>
+                            </div>
+                            <div class="h-[1px] w-full bg-cream-100"></div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm md:text-base font-medium text-cream-900">Parking C - Valet</span>
+                                <div class="flex items-center gap-2 text-[10px] md:text-xs font-bold uppercase tracking-widest text-cream-900" id="park-c">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-[#EF4444]"></span> Full
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 📩 Digital RSVP Section -->
+            <section class="max-w-4xl mx-auto reveal pt-8">
+                <div class="text-center mb-10 md:mb-14">
+                    <h3 class="text-4xl md:text-5xl font-serif text-cream-900 italic">Kindly RSVP</h3>
+                    <p class="text-gold-600 tracking-widest text-[10px] md:text-xs uppercase mt-3 font-semibold">Please respond by January 15th</p>
+                </div>
+                
+                <form id="rsvp-form" onsubmit="submitRSVP(event)" class="bg-white border border-cream-200 p-6 md:p-12 lg:p-16 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.03)]">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                        <div>
+                            <label class="text-xs font-bold tracking-widest uppercase text-cream-800/80 mb-2 block">Full Name(s)</label>
+                            <input type="text" id="rsvp-name" required placeholder="Mr. & Mrs. Sharma" class="w-full bg-cream-50 border border-cream-200 rounded-lg py-4 px-4 text-cream-900 text-sm outline-none focus:border-gold-400 focus:bg-white transition-all">
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold tracking-widest uppercase text-cream-800/80 mb-2 block">Will you attend?</label>
+                            <select id="rsvp-attend" required class="w-full bg-cream-50 border border-cream-200 rounded-lg py-4 px-4 text-cream-900 text-sm outline-none focus:border-gold-400 focus:bg-white transition-all appearance-none cursor-pointer">
+                                <option value="" disabled selected>Select an option...</option>
+                                <option value="Joyfully Accept">Joyfully Accept</option>
+                                <option value="Regretfully Decline">Regretfully Decline</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold tracking-widest uppercase text-cream-800/80 mb-2 block">Number of Guests</label>
+                            <input type="number" id="rsvp-guests" min="1" max="10" placeholder="e.g., 2" class="w-full bg-cream-50 border border-cream-200 rounded-lg py-4 px-4 text-cream-900 text-sm outline-none focus:border-gold-400 focus:bg-white transition-all">
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold tracking-widest uppercase text-cream-800/80 mb-2 block flex items-center gap-2">
+                                <i data-lucide="music" class="w-3 h-3 text-gold-500"></i> Sangeet Song Request
+                            </label>
+                            <input type="text" id="rsvp-song" placeholder="What song will get you dancing?" class="w-full bg-cream-50 border border-cream-200 rounded-lg py-4 px-4 text-cream-900 text-sm outline-none focus:border-gold-400 focus:bg-white transition-all">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="text-xs font-bold tracking-widest uppercase text-cream-800/80 mb-2 block">Dietary Requirements</label>
+                            <textarea id="rsvp-diet" rows="2" placeholder="Any allergies or preferences? (e.g., Vegan, Jain)" class="w-full bg-cream-50 border border-cream-200 rounded-lg p-4 text-cream-900 text-sm outline-none focus:border-gold-400 focus:bg-white transition-all resize-none"></textarea>
+                        </div>
+                    </div>
+                    <div class="mt-8 md:mt-10 flex justify-center">
+                        <button id="rsvp-submit-btn" type="submit" class="w-full md:w-auto px-12 py-4 md:py-5 bg-gold-500 hover:bg-gold-600 text-white font-bold tracking-[0.2em] uppercase text-xs md:text-sm rounded-full shadow-lg transition-all flex items-center justify-center gap-3 hover:scale-105">
+                            <i data-lucide="mail" class="w-4 h-4 md:w-5 md:h-5"></i> Send RSVP
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- ❓ Frequently Asked Questions -->
+            <section class="max-w-4xl mx-auto reveal pt-10">
+                <div class="text-center mb-10 md:mb-14">
+                    <h3 class="text-4xl md:text-5xl font-serif text-cream-900 italic">Guest FAQ</h3>
+                    <p class="text-gold-600 tracking-widest text-[10px] md:text-xs uppercase mt-3 font-semibold">Everything you need to know</p>
+                </div>
+                
+                <div class="space-y-4">
+                    <!-- FAQ 1 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-cream-200 overflow-hidden" onclick="toggleAccordion('faq-1')">
+                        <div class="p-5 md:p-6 flex items-center justify-between cursor-pointer group">
+                            <h4 class="text-sm md:text-base font-bold text-cream-900 group-hover:text-gold-600 transition-colors">Are kids welcome at the wedding?</h4>
+                            <i id="icon-faq-1" data-lucide="chevron-down" class="w-4 h-4 text-gold-400 transition-transform duration-300"></i>
+                        </div>
+                        <div id="content-faq-1" class="accordion-content px-5 md:px-6 bg-cream-50/50">
+                            <p class="text-xs md:text-sm text-cream-800/70 leading-relaxed border-t border-cream-200 pt-4">We love your little ones! However, to allow all guests (including parents) an evening of relaxation and uninhibited revelry, we respectfully ask that the Sangeet and Reception be adults-only. Children are more than welcome at the Mehndi ceremony.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-cream-200 overflow-hidden" onclick="toggleAccordion('faq-2')">
+                        <div class="p-5 md:p-6 flex items-center justify-between cursor-pointer group">
+                            <h4 class="text-sm md:text-base font-bold text-cream-900 group-hover:text-gold-600 transition-colors">Can I bring a plus one?</h4>
+                            <i id="icon-faq-2" data-lucide="chevron-down" class="w-4 h-4 text-gold-400 transition-transform duration-300"></i>
+                        </div>
+                        <div id="content-faq-2" class="accordion-content px-5 md:px-6 bg-cream-50/50">
+                            <p class="text-xs md:text-sm text-cream-800/70 leading-relaxed border-t border-cream-200 pt-4">Due to venue capacity, we can only accommodate guests who are formally named on your digital invitation. We appreciate your understanding and can't wait to celebrate with you!</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-cream-200 overflow-hidden" onclick="toggleAccordion('faq-3')">
+                        <div class="p-5 md:p-6 flex items-center justify-between cursor-pointer group">
+                            <h4 class="text-sm md:text-base font-bold text-cream-900 group-hover:text-gold-600 transition-colors">What will the weather be like?</h4>
+                            <i id="icon-faq-3" data-lucide="chevron-down" class="w-4 h-4 text-gold-400 transition-transform duration-300"></i>
+                        </div>
+                        <div id="content-faq-3" class="accordion-content px-5 md:px-6 bg-cream-50/50">
+                            <p class="text-xs md:text-sm text-cream-800/70 leading-relaxed border-t border-cream-200 pt-4">February brings beautiful, mild winter weather. Expect pleasant, sunny days around 22°C (72°F) and chilly evenings dropping to 12°C (54°F). We recommend bringing a shawl or light jacket for the evening outdoor events.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 📸 5️⃣ Photographer Mode -->
+            <section class="max-w-7xl mx-auto reveal pt-10">
+                <div class="flex items-end justify-between mb-8 md:mb-12 border-b border-cream-200 pb-6">
+                    <div>
+                        <h3 class="text-3xl md:text-5xl font-serif text-cream-900 italic flex items-center gap-3">
+                            Gallery
+                        </h3>
+                        <p class="text-[10px] md:text-sm tracking-widest uppercase text-gold-600 mt-3 font-semibold">Share your moments</p>
+                    </div>
+                    <button onclick="triggerUpload()" class="bg-white border border-gold-400/30 text-gold-500 p-4 md:p-5 rounded-full shadow-md hover:shadow-[0_8px_30px_rgba(181,148,97,0.2)] hover:scale-110 transition-all">
+                        <i data-lucide="camera" class="w-5 h-5 md:w-6 md:h-6"></i>
+                    </button>
+                </div>
+                
+                <div id="gallery-grid" class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
+                    <div class="overflow-hidden rounded-lg shadow-sm group cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop" class="w-full h-48 md:h-72 lg:h-80 object-cover sepia-[.1] group-hover:scale-110 group-hover:sepia-0 transition-all duration-700" alt="Gallery">
+                    </div>
+                    <div class="overflow-hidden rounded-lg shadow-sm group cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?q=80&w=800&auto=format&fit=crop" class="w-full h-48 md:h-72 lg:h-80 object-cover sepia-[.1] group-hover:scale-110 group-hover:sepia-0 transition-all duration-700" alt="Gallery">
+                    </div>
+                    <div class="overflow-hidden rounded-lg shadow-sm group cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800&auto=format&fit=crop" class="w-full h-48 md:h-72 lg:h-80 object-cover sepia-[.1] group-hover:scale-110 group-hover:sepia-0 transition-all duration-700" alt="Gallery">
+                    </div>
+                    <div class="overflow-hidden rounded-lg shadow-sm group cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop" class="w-full h-48 md:h-72 lg:h-80 object-cover sepia-[.1] group-hover:scale-110 group-hover:sepia-0 transition-all duration-700" alt="Gallery">
+                    </div>
+                </div>
+            </section>
+
+            <!-- 💌 Digital Guestbook / Love Notes -->
+            <section class="max-w-7xl mx-auto reveal pt-4">
+                <div class="flex items-end justify-between mb-8 border-b border-cream-200 pb-6">
+                    <div>
+                        <h3 class="text-3xl md:text-5xl font-serif text-cream-900 italic">Love Notes</h3>
+                        <p class="text-[10px] md:text-sm tracking-widest uppercase text-gold-600 mt-3 font-semibold">Digital Guestbook</p>
+                    </div>
+                    <button onclick="openWishModal()" class="flex items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-widest text-gold-600 border border-gold-400/30 px-4 md:px-8 py-3 md:py-4 rounded-full hover:bg-gold-50 transition-colors shadow-sm">
+                        <i data-lucide="message-square" class="w-4 h-4 md:w-5 md:h-5"></i> <span class="hidden md:inline">Leave a Wish</span>
+                    </button>
+                </div>
+
+                <!-- Dynamic container injected via JS -->
+                <div id="guestbook-container" class="flex overflow-x-auto gap-4 md:gap-8 pb-8 hide-scrollbar snap-x snap-mandatory">
+                </div>
+            </section>
+
+            <!-- 🎁 7️⃣ Gift Registry -->
+            <section class="pb-12 text-center max-w-4xl mx-auto reveal pt-10">
+                <i data-lucide="gift" class="w-8 h-8 md:w-12 md:h-12 text-gold-400 mx-auto mb-4 md:mb-6"></i>
+                <h3 class="text-4xl md:text-5xl lg:text-6xl font-serif text-cream-900 italic mb-3">Registry</h3>
+                <p class="text-xs md:text-sm text-cream-800/60 mb-8 md:mb-12 font-medium tracking-wide">Your presence is our present, but if you wish...</p>
+                
+                <div class="space-y-4 md:space-y-6">
+                    <div onclick="openRegistry('Honeymoon Fund')" class="bg-white border border-cream-200 p-5 md:p-8 rounded-xl flex items-center justify-between hover:border-gold-400/50 hover:shadow-[0_8px_30px_rgba(181,148,97,0.15)] transition-all cursor-pointer shadow-sm group">
+                        <div class="flex items-center gap-4 md:gap-8">
+                            <div class="p-3 md:p-5 bg-cream-50 rounded-full text-gold-500 border border-cream-100 group-hover:bg-gold-50 transition-colors"><i data-lucide="heart" class="w-4 h-4 md:w-6 md:h-6 fill-current opacity-20"></i></div>
+                            <span class="text-sm md:text-xl font-semibold text-cream-900">Honeymoon Fund</span>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-4 h-4 md:w-6 md:h-6 text-gold-400 group-hover:translate-x-2 transition-transform"></i>
+                    </div>
+                    <div onclick="openRegistry('Home Essentials')" class="bg-white border border-cream-200 p-5 md:p-8 rounded-xl flex items-center justify-between hover:border-gold-400/50 hover:shadow-[0_8px_30px_rgba(181,148,97,0.15)] transition-all cursor-pointer shadow-sm group">
+                        <div class="flex items-center gap-4 md:gap-8">
+                            <div class="p-3 md:p-5 bg-cream-50 rounded-full text-gold-500 border border-cream-100 group-hover:bg-gold-50 transition-colors"><i data-lucide="home" class="w-4 h-4 md:w-6 md:h-6"></i></div>
+                            <span class="text-sm md:text-xl font-semibold text-cream-900">Home Essentials</span>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-4 h-4 md:w-6 md:h-6 text-gold-400 group-hover:translate-x-2 transition-transform"></i>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer with Admin Lock -->
+        <footer class="bg-white border-t border-cream-200 py-10 md:py-16 text-center reveal">
+            <h2 class="text-3xl md:text-4xl font-display text-gold-500 mb-2">A & K</h2>
+            <p class="text-[10px] md:text-xs tracking-widest uppercase text-cream-800/50 mb-8">Together Forever</p>
+            <p class="text-[10px] md:text-xs text-cream-800/40">&copy; 2026 Aarav & Kiara Wedding.</p>
+            
+            <button onclick="openAdminLogin()" class="mt-8 flex items-center justify-center gap-2 mx-auto text-[10px] text-cream-800/30 hover:text-gold-500 transition-colors uppercase tracking-widest">
+                <i data-lucide="lock" class="w-3 h-3"></i> Backend Access
+            </button>
+        </footer>
+
+    </div>
+
+    <!-- Hidden File Input for Gallery -->
+    <input type="file" id="gallery-upload-input" class="hidden" accept="image/*" onchange="handleFileUpload(event)">
+
+    <!-- Registry Payment Modal -->
+    <div id="registry-modal" class="fixed inset-0 bg-cream-900/90 z-[110] flex items-center justify-center hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm px-4 custom-modal-overlay">
+        <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl p-6 md:p-10 relative custom-modal-box">
+            <button onclick="closeRegistry()" class="absolute top-4 right-4 md:top-6 md:right-6 text-cream-800/50 hover:text-gold-600 transition-colors">
+                <i data-lucide="x" class="w-5 h-5 md:w-6 md:h-6"></i>
+            </button>
+            <div class="text-center mb-6">
+                <i data-lucide="gift" class="w-8 h-8 md:w-10 md:h-10 text-gold-400 mx-auto mb-3"></i>
+                <h4 id="registry-title" class="text-2xl md:text-3xl font-serif italic text-cream-900 mb-1">Honeymoon Fund</h4>
+                <p class="text-[10px] md:text-xs uppercase tracking-widest text-cream-800/60 font-semibold">Secure Digital Contribution</p>
+            </div>
+            
+            <div class="space-y-4 md:space-y-5">
+                <div>
+                    <label class="text-xs font-semibold text-cream-900 mb-1.5 block">Amount</label>
+                    <div class="relative">
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-cream-800/50 font-medium">$</span>
+                        <input type="number" id="contribution-amount" placeholder="0.00" class="w-full bg-cream-50 border border-cream-200 rounded-xl py-3 md:py-4 pl-8 pr-4 text-cream-900 font-medium outline-none focus:border-gold-400 focus:bg-white transition-all">
+                    </div>
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-cream-900 mb-1.5 block">Leave a Message (Optional)</label>
+                    <textarea rows="2" placeholder="Wishing you a lifetime of joy..." class="w-full bg-cream-50 border border-cream-200 rounded-xl p-3 md:p-4 text-cream-900 text-sm outline-none focus:border-gold-400 focus:bg-white transition-all resize-none"></textarea>
+                </div>
+                <button id="process-btn" onclick="processContribution()" class="w-full py-4 md:py-5 bg-gold-500 hover:bg-gold-600 text-white font-bold tracking-widest uppercase text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-2 mt-2 border border-transparent">
+                    Send Contribution
+                </button>
+                <p class="text-[9px] md:text-[10px] text-center text-cream-800/40 mt-4 flex justify-center items-center gap-1">
+                    <i data-lucide="lock" class="w-3 h-3"></i> Secured via Stripe Simulation
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leave a Wish Modal -->
+    <div id="wish-modal" class="fixed inset-0 bg-cream-900/90 z-[110] flex items-center justify-center hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm px-4 custom-modal-overlay">
+        <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl p-6 md:p-10 relative custom-modal-box">
+            <button onclick="closeWishModal()" class="absolute top-4 right-4 md:top-6 md:right-6 text-cream-800/50 hover:text-gold-600 transition-colors">
+                <i data-lucide="x" class="w-5 h-5 md:w-6 md:h-6"></i>
+            </button>
+            <div class="text-center mb-6 md:mb-8">
+                <i data-lucide="pen-tool" class="w-8 h-8 md:w-10 md:h-10 text-gold-400 mx-auto mb-3"></i>
+                <h4 class="text-2xl md:text-3xl font-serif italic text-cream-900 mb-1">Leave a Love Note</h4>
+                <p class="text-[10px] md:text-xs uppercase tracking-widest text-cream-800/60 font-semibold">Sign our digital guestbook</p>
+            </div>
+            
+            <form id="wish-form" onsubmit="submitWish(event)" class="space-y-4 md:space-y-6">
+                <div>
+                    <label class="text-xs font-bold tracking-widest uppercase text-cream-800/80 mb-2 block">Your Name</label>
+                    <input type="text" id="wish-name" required placeholder="John & Jane" class="w-full bg-cream-50 border border-cream-200 rounded-xl py-3 md:py-4 px-4 text-cream-900 text-sm outline-none focus:border-gold-400 focus:bg-white transition-all">
+                </div>
+                <div>
+                    <label class="text-xs font-bold tracking-widest uppercase text-cream-800/80 mb-2 block">Your Message</label>
+                    <textarea id="wish-message" required rows="3" placeholder="Write your warm wishes here..." class="w-full bg-cream-50 border border-cream-200 rounded-xl p-4 text-cream-900 text-sm outline-none focus:border-gold-400 focus:bg-white transition-all resize-none"></textarea>
+                </div>
+                <button type="submit" id="wish-submit-btn" class="w-full py-4 md:py-5 bg-gold-500 hover:bg-gold-600 text-white font-bold tracking-[0.2em] uppercase text-xs md:text-sm rounded-xl shadow-md transition-all flex items-center justify-center gap-2 mt-4">
+                    <i data-lucide="send" class="w-4 h-4"></i> Post Message
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div id="admin-login-modal" class="fixed inset-0 bg-cream-900/95 z-[120] flex items-center justify-center hidden opacity-0 transition-opacity duration-300 backdrop-blur-md px-4 custom-modal-overlay">
+        <div class="bg-white w-full max-w-sm rounded-2xl shadow-2xl p-8 relative border border-gold-400/20 text-center custom-modal-box">
+            <button onclick="closeAdminLogin()" class="absolute top-4 right-4 text-cream-800/50 hover:text-gold-600 transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <i data-lucide="lock-keyhole" class="w-8 h-8 text-gold-500 mx-auto mb-4"></i>
+            <h4 class="text-2xl font-serif italic text-cream-900 mb-2">Backend Access</h4>
+            <p class="text-[10px] uppercase tracking-widest text-cream-800/60 font-semibold mb-6">Enter Admin Passcode</p>
+            
+            <input type="password" id="admin-password" placeholder="Passcode (Hint: 1234)" class="w-full bg-cream-50 border border-cream-200 rounded-lg py-3 px-4 text-center text-cream-900 text-lg tracking-[0.3em] outline-none focus:border-gold-400 focus:bg-white transition-all mb-4">
+            
+            <button onclick="verifyAdmin()" class="w-full py-3 bg-cream-900 hover:bg-black text-white font-bold tracking-widest uppercase text-xs rounded-lg shadow-md transition-all">
+                Unlock Backend
+            </button>
+        </div>
+    </div>
+
+    <!-- FULL EVENT BACKEND MODAL -->
+    <div id="admin-dashboard-modal" class="fixed inset-0 bg-cream-900/95 z-[120] flex items-center justify-center hidden opacity-0 transition-opacity duration-300 backdrop-blur-md px-4 custom-modal-overlay py-10">
+        <div class="bg-white w-full max-w-5xl h-full max-h-[90vh] rounded-2xl shadow-2xl flex flex-col custom-modal-box overflow-hidden border border-gold-400/20">
+            
+            <!-- Backend Header -->
+            <div class="bg-cream-50 border-b border-cream-200 p-6 flex items-center justify-between z-10">
+                <div class="flex items-center gap-3">
+                    <i data-lucide="settings" class="w-6 h-6 text-gold-500"></i>
+                    <div>
+                        <h4 class="text-xl md:text-2xl font-serif italic text-cream-900 leading-none">Event Backend</h4>
+                        <p class="text-[10px] uppercase tracking-widest text-cream-800/60 font-semibold mt-1">Management Dashboard</p>
+                    </div>
+                </div>
+                <button onclick="closeAdminDashboard()" class="text-cream-800/50 hover:text-gold-600 transition-colors p-2 bg-white rounded-full border border-cream-200 shadow-sm">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            
+            <!-- Tabs -->
+            <div class="flex overflow-x-auto hide-scrollbar border-b border-cream-100 bg-white px-4 md:px-6">
+                <button onclick="switchAdminTab('invites')" id="tab-btn-invites" class="admin-tab-btn py-4 px-4 text-xs font-bold tracking-widest uppercase text-gold-600 border-b-2 border-gold-500 whitespace-nowrap flex items-center gap-2">
+                    <i data-lucide="link" class="w-4 h-4"></i> Invites
+                </button>
+                <button onclick="switchAdminTab('rsvps')" id="tab-btn-rsvps" class="admin-tab-btn py-4 px-4 text-xs font-bold tracking-widest uppercase text-cream-800/50 border-b-2 border-transparent hover:text-cream-900 whitespace-nowrap flex items-center gap-2">
+                    <i data-lucide="mail" class="w-4 h-4"></i> RSVPs
+                </button>
+                <button onclick="switchAdminTab('guestbook')" id="tab-btn-guestbook" class="admin-tab-btn py-4 px-4 text-xs font-bold tracking-widest uppercase text-cream-800/50 border-b-2 border-transparent hover:text-cream-900 whitespace-nowrap flex items-center gap-2">
+                    <i data-lucide="book-open" class="w-4 h-4"></i> Guestbook
+                </button>
+                <button onclick="switchAdminTab('live')" id="tab-btn-live" class="admin-tab-btn py-4 px-4 text-xs font-bold tracking-widest uppercase text-cream-800/50 border-b-2 border-transparent hover:text-cream-900 whitespace-nowrap flex items-center gap-2">
+                    <i data-lucide="radio" class="w-4 h-4"></i> Live Event
+                </button>
+            </div>
+
+            <!-- Tab Contents -->
+            <div class="flex-1 overflow-y-auto p-6 md:p-8 bg-cream-50/30 hide-scrollbar">
+                
+                <!-- TAB: INVITES -->
+                <div id="tab-content-invites" class="admin-tab-content block">
+                    <div class="mb-6 bg-cream-50 border border-cream-200 rounded-xl p-6">
+                        <label class="text-xs font-bold tracking-widest uppercase text-cream-800/80 mb-2 block">Bulk Invite Generator</label>
+                        <p class="text-xs text-cream-800/60 mb-4">Paste a list of names (one per line) to instantly generate personalized URL links.</p>
+                        <textarea id="bulk-guest-names" rows="4" placeholder="Mr. Sharma & Family&#10;Priya Patel&#10;The Verma Household" class="w-full bg-white border border-cream-200 rounded-lg p-4 text-cream-900 text-sm outline-none focus:border-gold-400 transition-all resize-none mb-4 shadow-sm"></textarea>
+                        <div class="flex justify-end">
+                            <button onclick="generateBulkInvites()" class="py-3 px-8 bg-gold-500 hover:bg-gold-600 text-white font-bold tracking-widest uppercase text-xs rounded-lg shadow-md transition-all flex items-center gap-2">
+                                <i data-lucide="wand-2" class="w-4 h-4"></i> Generate Links
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center mb-4">
+                        <h5 class="text-xs font-bold tracking-widest uppercase text-cream-800/80">Generated Invites <span id="invite-count" class="text-gold-600 font-bold ml-1">(0)</span></h5>
+                        <button onclick="clearAllInvites()" class="text-[10px] uppercase font-bold tracking-widest text-red-500 hover:text-red-700 transition-colors flex items-center gap-1 bg-red-50 px-3 py-1.5 rounded-full border border-red-100">
+                            <i data-lucide="trash" class="w-3 h-3"></i> Clear All
+                        </button>
+                    </div>
+                    <div id="generated-links-list" class="space-y-3"></div>
+                </div>
+
+                <!-- TAB: RSVPS -->
+                <div id="tab-content-rsvps" class="admin-tab-content hidden">
+                    <div class="flex justify-between items-end mb-6">
+                        <div>
+                            <h5 class="text-xs font-bold tracking-widest uppercase text-cream-800/80">Received RSVPs</h5>
+                            <p class="text-sm text-cream-800/60 mt-1">Total Guests Attending: <span id="rsvp-total-guests" class="font-bold text-gold-600 text-lg">0</span></p>
+                        </div>
+                        <button onclick="clearRSVPs()" class="text-[10px] uppercase font-bold tracking-widest text-red-500 hover:text-red-700 transition-colors flex items-center gap-1 bg-red-50 px-3 py-1.5 rounded-full border border-red-100">
+                            <i data-lucide="trash" class="w-3 h-3"></i> Clear Data
+                        </button>
+                    </div>
+                    <div class="overflow-x-auto bg-white rounded-xl border border-cream-200 shadow-sm">
+                        <table class="w-full text-left border-collapse min-w-[600px]">
+                            <thead>
+                                <tr class="bg-cream-50 border-b border-cream-200">
+                                    <th class="p-4 text-[10px] font-bold tracking-widest uppercase text-cream-800/60">Guest Name</th>
+                                    <th class="p-4 text-[10px] font-bold tracking-widest uppercase text-cream-800/60">Status</th>
+                                    <th class="p-4 text-[10px] font-bold tracking-widest uppercase text-cream-800/60">Count</th>
+                                    <th class="p-4 text-[10px] font-bold tracking-widest uppercase text-cream-800/60">Dietary Needs</th>
+                                    <th class="p-4 text-[10px] font-bold tracking-widest uppercase text-cream-800/60">Song Request</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-rsvp-list" class="text-sm text-cream-900 font-medium">
+                                <!-- Injected via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TAB: GUESTBOOK -->
+                <div id="tab-content-guestbook" class="admin-tab-content hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <h5 class="text-xs font-bold tracking-widest uppercase text-cream-800/80">Guestbook Moderation</h5>
+                        <p class="text-[10px] uppercase font-bold text-cream-800/50"><span id="guestbook-count">0</span> Notes</p>
+                    </div>
+                    <div id="admin-guestbook-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Injected via JS -->
+                    </div>
+                </div>
+
+                <!-- TAB: LIVE EVENT -->
+                <div id="tab-content-live" class="admin-tab-content hidden">
+                    <div class="mb-8">
+                        <h5 class="text-xs font-bold tracking-widest uppercase text-cream-800/80 mb-4 flex items-center gap-2">
+                            <i data-lucide="utensils" class="w-4 h-4 text-gold-500"></i> Live Food Stalls
+                        </h5>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="bg-white border border-cream-200 p-4 rounded-xl flex items-center justify-between shadow-sm">
+                                <span class="font-bold text-sm text-cream-900">Punjabi Counter</span>
+                                <select onchange="updateLiveStatus('food', 'punjabi', this.value)" class="bg-cream-50 border border-cream-200 rounded-lg p-2 text-xs font-bold uppercase tracking-wider outline-none focus:border-gold-400">
+                                    <option value="Open">Open</option>
+                                    <option value="Refilling">Refilling</option>
+                                    <option value="In 5 Min">In 5 Min</option>
+                                    <option value="Closed">Closed</option>
+                                </select>
+                            </div>
+                            <div class="bg-white border border-cream-200 p-4 rounded-xl flex items-center justify-between shadow-sm">
+                                <span class="font-bold text-sm text-cream-900">Chinese Wok</span>
+                                <select onchange="updateLiveStatus('food', 'chinese', this.value)" class="bg-cream-50 border border-cream-200 rounded-lg p-2 text-xs font-bold uppercase tracking-wider outline-none focus:border-gold-400">
+                                    <option value="Open">Open</option>
+                                    <option value="Refilling">Refilling</option>
+                                    <option value="In 5 Min">In 5 Min</option>
+                                    <option value="Closed">Closed</option>
+                                </select>
+                            </div>
+                            <div class="bg-white border border-cream-200 p-4 rounded-xl flex items-center justify-between shadow-sm">
+                                <span class="font-bold text-sm text-cream-900">Ice Cream Parlour</span>
+                                <select id="admin-food-icecream" onchange="updateLiveStatus('food', 'icecream', this.value)" class="bg-cream-50 border border-cream-200 rounded-lg p-2 text-xs font-bold uppercase tracking-wider outline-none focus:border-gold-400">
+                                    <option value="In 10 Min">In 10 Min</option>
+                                    <option value="Open">Open</option>
+                                    <option value="Refilling">Refilling</option>
+                                    <option value="Closed">Closed</option>
+                                </select>
+                            </div>
+                            <div class="bg-white border border-cream-200 p-4 rounded-xl flex items-center justify-between shadow-sm">
+                                <span class="font-bold text-sm text-cream-900">Gujarati Thali</span>
+                                <select id="admin-food-gujarati" onchange="updateLiveStatus('food', 'gujarati', this.value)" class="bg-cream-50 border border-cream-200 rounded-lg p-2 text-xs font-bold uppercase tracking-wider outline-none focus:border-gold-400">
+                                    <option value="Closed">Closed</option>
+                                    <option value="Open">Open</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h5 class="text-xs font-bold tracking-widest uppercase text-cream-800/80 mb-4 flex items-center gap-2">
+                            <i data-lucide="car" class="w-4 h-4 text-gold-500"></i> Smart Parking Grid
+                        </h5>
+                        <div class="space-y-3 max-w-xl">
+                            <div class="bg-white border border-cream-200 p-4 rounded-xl flex items-center justify-between shadow-sm">
+                                <span class="font-bold text-sm text-cream-900">Parking A - VIP</span>
+                                <select onchange="updateLiveStatus('park', 'a', this.value)" class="bg-cream-50 border border-cream-200 rounded-lg p-2 text-xs font-bold uppercase tracking-wider outline-none focus:border-gold-400">
+                                    <option value="Available">Available</option>
+                                    <option value="Filling Fast">Filling Fast</option>
+                                    <option value="Full">Full</option>
+                                </select>
+                            </div>
+                            <div class="bg-white border border-cream-200 p-4 rounded-xl flex items-center justify-between shadow-sm">
+                                <span class="font-bold text-sm text-cream-900">Parking B - Guests</span>
+                                <select id="admin-park-b" onchange="updateLiveStatus('park', 'b', this.value)" class="bg-cream-50 border border-cream-200 rounded-lg p-2 text-xs font-bold uppercase tracking-wider outline-none focus:border-gold-400">
+                                    <option value="Filling Fast">Filling Fast</option>
+                                    <option value="Available">Available</option>
+                                    <option value="Full">Full</option>
+                                </select>
+                            </div>
+                            <div class="bg-white border border-cream-200 p-4 rounded-xl flex items-center justify-between shadow-sm">
+                                <span class="font-bold text-sm text-cream-900">Parking C - Valet</span>
+                                <select id="admin-park-c" onchange="updateLiveStatus('park', 'c', this.value)" class="bg-cream-50 border border-cream-200 rounded-lg p-2 text-xs font-bold uppercase tracking-wider outline-none focus:border-gold-400">
+                                    <option value="Full">Full</option>
+                                    <option value="Available">Available</option>
+                                    <option value="Filling Fast">Filling Fast</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🧠 9️⃣ AI Wedding Assistant -->
+    <div id="ai-chat-container" class="fixed bottom-24 right-4 md:right-8 z-50 flex flex-col items-end hidden">
+        <div class="bg-white border border-cream-200 w-[300px] md:w-[380px] h-[400px] md:h-[500px] rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] mb-4 flex flex-col overflow-hidden transform scale-95 opacity-0 transition-all duration-300 origin-bottom-right" id="chat-window">
+            <div class="bg-cream-50 border-b border-cream-200 p-4 md:p-5 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-gold-50 rounded-full flex items-center justify-center text-gold-600 font-serif italic text-xl md:text-2xl border border-gold-200">N</div>
+                    <div>
+                        <span class="text-cream-900 font-semibold text-sm md:text-base block">Nyota Assistant</span>
+                        <span class="text-[10px] text-green-600 font-bold tracking-wider uppercase">Online</span>
+                    </div>
+                </div>
+                <button onclick="toggleChat()" class="text-cream-800 hover:text-gold-500 transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            
+            <div id="chat-messages" class="flex-1 p-4 md:p-6 overflow-y-auto space-y-5 text-sm bg-white hide-scrollbar">
+                <div class="flex items-start gap-3 animate-fade-in-up">
+                    <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gold-50 flex-shrink-0 flex items-center justify-center text-gold-600 font-serif italic text-sm md:text-base border border-gold-100">N</div>
+                    <div class="bg-cream-50 border border-cream-100 p-4 rounded-2xl rounded-tl-none text-cream-900 shadow-sm text-sm md:text-base leading-relaxed font-medium">
+                        Welcome! I am Nyota. How can I assist you with the wedding details today?
+                    </div>
+                </div>
+            </div>
+
+            <!-- Typing Indicator -->
+            <div id="typing-indicator" class="px-6 pb-3 hidden">
+                <span class="text-[10px] md:text-xs text-cream-800/50 italic font-medium">Nyota is typing...</span>
+            </div>
+
+            <div class="p-3 md:p-4 border-t border-cream-200 bg-white flex gap-2">
+                <input type="text" id="chat-input" placeholder="Ask a question..." class="flex-1 bg-cream-50 text-cream-900 px-4 md:px-5 py-3 md:py-4 rounded-full text-sm outline-none border border-cream-200 focus:border-gold-400 transition-colors" onkeypress="handleChatEnter(event)">
+                <button onclick="sendMessage()" class="bg-gold-500 text-white p-3 md:p-4 rounded-full hover:bg-gold-600 transition-colors shadow-md flex items-center justify-center">
+                    <i data-lucide="send" class="w-4 h-4 md:w-5 md:h-5"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Floating Fab -->
+    <button id="ai-fab" onclick="toggleChat()" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 bg-white border border-gold-200 text-gold-600 px-5 md:px-8 py-3.5 md:py-5 rounded-full shadow-[0_8px_30px_rgba(181,148,97,0.2)] flex items-center gap-2 hover:scale-105 transition-transform hidden opacity-0 duration-700">
+        <i data-lucide="sparkles" class="w-5 h-5 md:w-6 md:h-6"></i>
+        <span class="font-bold tracking-widest uppercase text-[10px] md:text-sm">Ask Nyota</span>
+    </button>
+
+    <!-- 🎥 Cinematic Trailer Modal -->
+    <div id="trailer-modal" class="fixed inset-0 bg-cream-900/95 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-500 backdrop-blur-md px-4">
+        <button onclick="closeTrailer()" class="absolute top-6 left-6 md:top-10 md:left-10 text-white/70 hover:text-white p-2 transition-all flex items-center gap-3 group z-50">
+            <i data-lucide="arrow-left" class="w-6 h-6 md:w-8 md:h-8 group-hover:-translate-x-2 transition-transform"></i>
+            <span class="tracking-[0.2em] md:tracking-[0.3em] uppercase text-xs md:text-sm font-bold">Back</span>
+        </button>
+        <div class="w-full max-w-6xl aspect-video bg-black rounded-lg overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] relative flex-shrink-0">
+            <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=2000&auto=format&fit=crop" class="w-full h-full object-cover opacity-70" alt="Trailer">
+            <div class="absolute inset-0 flex items-center justify-center">
+                <i data-lucide="play" class="w-16 h-16 md:w-24 md:h-24 text-white/80 hover:text-gold-400 transition-colors cursor-pointer hover:scale-110 fill-current drop-shadow-2xl"></i>
+            </div>
+            <div class="absolute bottom-8 md:bottom-12 left-0 right-0 text-center px-4">
+                <p class="text-white text-xl md:text-3xl lg:text-4xl font-serif italic drop-shadow-lg bg-black/30 inline-block px-6 py-2 rounded-lg backdrop-blur-sm">"It all started with a cup of coffee..."</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Beautiful Custom Alert Modal -->
+    <div id="custom-alert-modal" class="fixed inset-0 bg-cream-900/80 backdrop-blur-sm z-[9999] hidden flex items-center justify-center opacity-0 transition-opacity duration-300 px-4 custom-modal-overlay">
+        <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-sm w-full text-center border border-gold-400/30 custom-modal-box">
+            <div id="custom-alert-icon-bg" class="w-16 h-16 bg-cream-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-cream-200 text-gold-500">
+                <i id="custom-alert-icon" data-lucide="info" class="w-8 h-8"></i>
+            </div>
+            <h4 id="custom-alert-title" class="text-2xl font-serif italic text-cream-900 mb-2">Notice</h4>
+            <p id="custom-alert-msg" class="text-sm text-cream-800/70 mb-8 leading-relaxed font-medium">Message goes here.</p>
+            <button onclick="closeCustomAlert()" class="w-full py-4 bg-gold-500 hover:bg-gold-600 text-white font-bold tracking-[0.2em] uppercase text-xs rounded-xl shadow-md transition-all">
+                Got it
+            </button>
+        </div>
+    </div>
+
+    <!-- Beautiful Custom Confirm Modal -->
+    <div id="custom-confirm-modal" class="fixed inset-0 bg-cream-900/80 backdrop-blur-sm z-[9999] hidden flex items-center justify-center opacity-0 transition-opacity duration-300 px-4 custom-modal-overlay">
+        <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-sm w-full text-center border border-gold-400/30 custom-modal-box">
+            <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-red-100 text-red-500">
+                <i data-lucide="alert-triangle" class="w-8 h-8"></i>
+            </div>
+            <h4 id="custom-confirm-title" class="text-2xl font-serif italic text-cream-900 mb-2">Are you sure?</h4>
+            <p id="custom-confirm-msg" class="text-sm text-cream-800/70 mb-8 leading-relaxed font-medium">Do you want to proceed with this action?</p>
+            <div class="flex gap-4">
+                <button onclick="closeCustomConfirm()" class="flex-1 py-4 bg-cream-100 hover:bg-cream-200 text-cream-900 font-bold tracking-widest uppercase text-xs rounded-xl transition-all">
+                    Cancel
+                </button>
+                <button id="custom-confirm-btn" class="flex-1 py-4 bg-red-500 hover:bg-red-600 text-white font-bold tracking-widest uppercase text-xs rounded-xl shadow-md transition-all">
+                    Proceed
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Constants
+        const WEDDING_DATE = new Date(new Date().getTime() + 12 * 24 * 60 * 60 * 1000); 
+
+        // --- Custom Modal Logic ---
+        function showCustomAlert(title, message, iconType) {
+            document.getElementById('custom-alert-title').innerText = title;
+            document.getElementById('custom-alert-msg').innerText = message;
+            
+            const iconEl = document.getElementById('custom-alert-icon');
+            iconEl.setAttribute('data-lucide', iconType);
+            lucide.createIcons();
+
+            const modal = document.getElementById('custom-alert-modal');
+            modal.classList.remove('hidden');
+            void modal.offsetWidth;
+            modal.classList.add('open');
+            modal.style.opacity = '1';
+        }
+
+        function closeCustomAlert() {
+            const modal = document.getElementById('custom-alert-modal');
+            modal.classList.remove('open');
+            modal.style.opacity = '0';
+            setTimeout(() => modal.classList.add('hidden'), 400);
+        }
+
+        let confirmCallbackAction = null;
+        function showCustomConfirm(title, message, callback) {
+            document.getElementById('custom-confirm-title').innerText = title;
+            document.getElementById('custom-confirm-msg').innerText = message;
+            confirmCallbackAction = callback;
+
+            const modal = document.getElementById('custom-confirm-modal');
+            modal.classList.remove('hidden');
+            void modal.offsetWidth;
+            modal.classList.add('open');
+            modal.style.opacity = '1';
+
+            document.getElementById('custom-confirm-btn').onclick = () => {
+                closeCustomConfirm();
+                if(confirmCallbackAction) confirmCallbackAction();
+            };
+        }
+
+        function closeCustomConfirm() {
+            const modal = document.getElementById('custom-confirm-modal');
+            modal.classList.remove('open');
+            modal.style.opacity = '0';
+            setTimeout(() => modal.classList.add('hidden'), 400);
+        }
+        
+        // --- 1. System Initializer ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const name = params.get('guest');
+            if (name) {
+                document.getElementById('guest-name-display').innerText = `${name}`;
+                document.getElementById('guest-personalized-msg').innerText = `We would be absolutely thrilled to have you and your family join us in celebrating the beginning of our forever.`;
+            }
+            
+            seedDefaultData();
+            loadGeneratedLinks();
+            renderAdminRSVPs();
+            renderGuestbook();
+        });
+
+        function seedDefaultData() {
+            // Seed Mock Wishes if none exist
+            if(!localStorage.getItem('weddingWishes')) {
+                const defaultWishes = [
+                    { name: "Priya & Rahul", message: "Wishing you a lifetime of love and happiness. Can't wait for the big day!", date: new Date().toLocaleDateString() },
+                    { name: "Aman Verma", message: "May your years together be as beautiful as the love you share today. Cheers!", date: new Date().toLocaleDateString() },
+                    { name: "Sneha & Family", message: "So incredibly happy for you both. The Sangeet is going to be epic!", date: new Date().toLocaleDateString() }
+                ];
+                localStorage.setItem('weddingWishes', JSON.stringify(defaultWishes));
+            }
+        }
+
+        function enterApp() {
+            const introScreen = document.getElementById('intro-screen');
+            const mainApp = document.getElementById('main-app');
+            const fab = document.getElementById('ai-fab');
+            const bgMusic = document.getElementById('bg-music');
+            
+            introScreen.style.opacity = '0';
+            
+            setTimeout(() => {
+                introScreen.style.display = 'none';
+                mainApp.classList.remove('hidden');
+                void mainApp.offsetWidth; 
+                mainApp.style.opacity = '1';
+                initScrollAnimations();
+                
+                bgMusic.play().catch(e => console.log("Audio autoplay blocked by browser."));
+                isMuted = false;
+                updateMusicIcon();
+
+                fab.classList.remove('hidden');
+                setTimeout(() => fab.style.opacity = '1', 10);
+            }, 800);
+        }
+
+        // --- ENTIRE BACKEND: ADMIN LOGIC ---
+        function openAdminLogin() {
+            const modal = document.getElementById('admin-login-modal');
+            modal.classList.remove('hidden');
+            void modal.offsetWidth;
+            modal.classList.add('open');
+            modal.style.opacity = '1';
+        }
+
+        function closeAdminLogin() {
+            const modal = document.getElementById('admin-login-modal');
+            modal.classList.remove('open');
+            modal.style.opacity = '0';
+            setTimeout(() => modal.classList.add('hidden'), 400);
+            document.getElementById('admin-password').value = '';
+        }
+
+        function verifyAdmin() {
+            const pwd = document.getElementById('admin-password').value;
+            if(pwd === '1234') { 
+                closeAdminLogin();
+                setTimeout(() => {
+                    const dashboard = document.getElementById('admin-dashboard-modal');
+                    dashboard.classList.remove('hidden');
+                    void dashboard.offsetWidth;
+                    dashboard.classList.add('open');
+                    dashboard.style.opacity = '1';
+                    // Refresh data on open
+                    loadGeneratedLinks();
+                    renderAdminRSVPs();
+                    renderAdminGuestbook();
+                }, 400);
+            } else {
+                showCustomAlert('Access Denied', 'Incorrect passcode entered. Please try again.', 'lock');
+            }
+        }
+
+        function closeAdminDashboard() {
+            const modal = document.getElementById('admin-dashboard-modal');
+            modal.classList.remove('open');
+            modal.style.opacity = '0';
+            setTimeout(() => modal.classList.add('hidden'), 400);
+        }
+
+        // Backend Tabs Switcher
+        function switchAdminTab(tabName) {
+            const tabs = ['invites', 'rsvps', 'guestbook', 'live'];
+            tabs.forEach(t => {
+                const btn = document.getElementById(`tab-btn-${t}`);
+                const content = document.getElementById(`tab-content-${t}`);
+                
+                if(t === tabName) {
+                    btn.classList.remove('text-cream-800/50', 'border-transparent');
+                    btn.classList.add('text-gold-600', 'border-gold-500');
+                    content.classList.remove('hidden');
+                    content.classList.add('block', 'animate-fade-in-up');
+                } else {
+                    btn.classList.add('text-cream-800/50', 'border-transparent');
+                    btn.classList.remove('text-gold-600', 'border-gold-500');
+                    content.classList.add('hidden');
+                    content.classList.remove('block', 'animate-fade-in-up');
+                }
+            });
+        }
+
+        // Backend: Generate Invites
+        function generateBulkInvites() {
+            const textarea = document.getElementById('bulk-guest-names');
+            const inputData = textarea.value.trim();
+            
+            if(!inputData) {
+                showCustomAlert('Missing Information', 'Please paste at least one guest name to generate links.', 'users');
+                return;
+            }
+
+            const names = inputData.split('\n').map(n => n.trim()).filter(n => n.length > 0);
+            if(names.length === 0) return;
+
+            let baseUrl = window.location.origin + window.location.pathname;
+            if(baseUrl.includes('file://') || baseUrl.includes('about:blank') || baseUrl.includes('sandbox')) {
+                baseUrl = 'https://aarav-kiara-wedding.com/';
+            } else {
+                baseUrl = baseUrl.split('?')[0];
+            }
+
+            const existingLinks = JSON.parse(localStorage.getItem('weddingInvites') || '[]');
+            const currentDate = new Date().toLocaleDateString();
+            let newlyAddedCount = 0;
+
+            names.forEach(name => {
+                const inviteLink = `${baseUrl}?guest=${encodeURIComponent(name)}`;
+                const waMessage = `Dear ${name},%0A%0AWe joyfully invite you and your family to celebrate the wedding of Aarav & Kiara.%0A%0APlease view your personalized digital invitation here:%0A${inviteLink}%0A%0AWe look forward to seeing you!`;
+                const waApiLink = `https://wa.me/?text=${waMessage}`;
+                existingLinks.unshift({ name, inviteLink, waApiLink, date: currentDate });
+                newlyAddedCount++;
+            });
+
+            localStorage.setItem('weddingInvites', JSON.stringify(existingLinks));
+            textarea.value = '';
+            loadGeneratedLinks(); 
+            showCustomAlert('Success!', `Successfully generated ${newlyAddedCount} personalized invite link(s).`, 'check-circle');
+        }
+
+        function loadGeneratedLinks() {
+            const list = document.getElementById('generated-links-list');
+            const countDisplay = document.getElementById('invite-count');
+            if(!list) return;
+            
+            const links = JSON.parse(localStorage.getItem('weddingInvites') || '[]');
+            countDisplay.innerText = `(${links.length})`;
+
+            if(links.length === 0) {
+                list.innerHTML = '<div class="text-center py-8"><i data-lucide="inbox" class="w-8 h-8 mx-auto text-cream-800/20 mb-2"></i><p class="text-xs text-cream-800/50 font-medium">No invites generated yet.</p></div>';
+                lucide.createIcons();
+                return;
+            }
+
+            list.innerHTML = links.map((link, index) => `
+                <div class="bg-white p-4 rounded-xl border border-cream-200 shadow-sm text-left flex flex-col md:flex-row md:items-center justify-between gap-4 transition-all hover:border-gold-300">
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-bold text-cream-900 truncate">${link.name}</p>
+                        <p class="text-[10px] text-cream-800/50 truncate mt-1">Link: ${link.inviteLink}</p>
+                    </div>
+                    <div class="flex items-center gap-2 flex-wrap flex-shrink-0">
+                        <a href="${link.inviteLink}" target="_blank" title="Preview Invite" class="p-2.5 bg-cream-50 hover:bg-cream-100 rounded-lg text-cream-900 transition-colors border border-cream-200">
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </a>
+                        <button onclick="navigator.clipboard.writeText('${link.inviteLink}'); showCustomAlert('Link Copied', 'The invitation link has been successfully copied to your clipboard.', 'copy')" title="Copy Link" class="p-2.5 bg-cream-50 hover:bg-cream-100 rounded-lg text-cream-900 transition-colors border border-cream-200">
+                            <i data-lucide="copy" class="w-4 h-4"></i>
+                        </button>
+                        <a href="${link.waApiLink}" target="_blank" class="px-4 py-2.5 bg-[#25D366] hover:bg-[#1DA851] text-white text-xs font-bold rounded-lg flex items-center gap-2 transition-colors shadow-md border border-[#1DA851]">
+                            <i data-lucide="message-circle" class="w-4 h-4"></i> <span class="hidden sm:inline">WhatsApp</span>
+                        </a>
+                        <button onclick="deleteInvite(${index})" title="Delete" class="p-2.5 bg-red-50 hover:bg-red-100 rounded-lg text-red-500 transition-colors ml-1 border border-red-100">
+                            <i data-lucide="trash-2" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function deleteInvite(index) {
+            showCustomConfirm('Delete Invite', 'Are you sure you want to permanently remove this generated invite link?', () => {
+                const links = JSON.parse(localStorage.getItem('weddingInvites') || '[]');
+                links.splice(index, 1);
+                localStorage.setItem('weddingInvites', JSON.stringify(links));
+                loadGeneratedLinks(); 
+            });
+        }
+
+        function clearAllInvites() {
+            const links = JSON.parse(localStorage.getItem('weddingInvites') || '[]');
+            if(links.length === 0) return;
+
+            showCustomConfirm('Clear All Invites', 'Are you sure you want to delete ALL generated links? This cannot be undone.', () => {
+                localStorage.removeItem('weddingInvites');
+                loadGeneratedLinks();
+            });
+        }
+
+        // Backend: RSVPs Logic
+        function renderAdminRSVPs() {
+            const rsvps = JSON.parse(localStorage.getItem('weddingRSVPs') || '[]');
+            const list = document.getElementById('admin-rsvp-list');
+            const totalCountEl = document.getElementById('rsvp-total-guests');
+            
+            let totalGuests = 0;
+            
+            if(rsvps.length === 0) {
+                list.innerHTML = '<tr><td colspan="5" class="p-8 text-center text-cream-800/50 italic text-xs">No RSVPs received yet.</td></tr>';
+                totalCountEl.innerText = '0';
+                return;
+            }
+
+            list.innerHTML = rsvps.map(r => {
+                if(r.status === 'Joyfully Accept') totalGuests += parseInt(r.guests);
+                
+                const statusBadge = r.status === 'Joyfully Accept' 
+                    ? '<span class="px-2 py-1 bg-green-50 text-green-700 rounded text-[10px] font-bold uppercase tracking-wider border border-green-200">Accept</span>'
+                    : '<span class="px-2 py-1 bg-red-50 text-red-700 rounded text-[10px] font-bold uppercase tracking-wider border border-red-200">Decline</span>';
+                    
+                return `
+                <tr class="border-b border-cream-100 hover:bg-cream-50 transition-colors">
+                    <td class="p-4 whitespace-nowrap">${r.name}</td>
+                    <td class="p-4 whitespace-nowrap">${statusBadge}</td>
+                    <td class="p-4 whitespace-nowrap">${r.guests}</td>
+                    <td class="p-4 text-xs text-cream-800/80 max-w-[150px] truncate" title="${r.diet}">${r.diet || '-'}</td>
+                    <td class="p-4 text-xs text-cream-800/80 max-w-[150px] truncate" title="${r.song}">${r.song || '-'}</td>
+                </tr>
+                `;
+            }).join('');
+            
+            totalCountEl.innerText = totalGuests;
+        }
+
+        function clearRSVPs() {
+            const rsvps = JSON.parse(localStorage.getItem('weddingRSVPs') || '[]');
+            if(rsvps.length === 0) return;
+            showCustomConfirm('Clear RSVPs', 'Are you sure you want to delete all RSVP data? This action cannot be undone.', () => {
+                localStorage.removeItem('weddingRSVPs');
+                renderAdminRSVPs();
+            });
+        }
+
+        // Backend: Guestbook Moderation
+        function renderAdminGuestbook() {
+            const wishes = JSON.parse(localStorage.getItem('weddingWishes') || '[]');
+            const list = document.getElementById('admin-guestbook-list');
+            document.getElementById('guestbook-count').innerText = wishes.length;
+
+            if(wishes.length === 0) {
+                list.innerHTML = '<div class="col-span-2 text-center py-8"><i data-lucide="message-square-off" class="w-8 h-8 mx-auto text-cream-800/20 mb-2"></i><p class="text-xs text-cream-800/50 font-medium">No guestbook entries found.</p></div>';
+                lucide.createIcons();
+                return;
+            }
+
+            list.innerHTML = wishes.map((w, index) => `
+                <div class="bg-white border border-cream-200 p-5 rounded-xl shadow-sm relative pr-12 group">
+                    <button onclick="deleteAdminWish(${index})" class="absolute top-4 right-4 text-cream-800/20 hover:text-red-500 transition-colors p-1" title="Delete Note">
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                    </button>
+                    <p class="text-cream-800 text-sm italic mb-3">"${w.message}"</p>
+                    <p class="text-xs font-bold uppercase tracking-wider text-cream-900">- ${w.name}</p>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function deleteAdminWish(index) {
+            showCustomConfirm('Delete Love Note', 'Are you sure you want to remove this message from the public guestbook?', () => {
+                const wishes = JSON.parse(localStorage.getItem('weddingWishes') || '[]');
+                wishes.splice(index, 1);
+                localStorage.setItem('weddingWishes', JSON.stringify(wishes));
+                renderAdminGuestbook();
+                renderGuestbook(); // update frontend instantly
+            });
+        }
+
+        // Backend: Live Event Controls
+        function updateLiveStatus(type, item, status) {
+            // Maps the admin dropdown select to the frontend UI logic
+            let elId = '';
+            let colors = '';
+            
+            if(type === 'food') {
+                elId = `status-${item}`;
+                if(status === 'Open') colors = 'bg-[#F0FDF4] text-[#166534] border-[#BBF7D0]';
+                else if(status === 'Closed') colors = 'bg-[#FEF2F2] text-[#991B1B] border-[#FECACA]';
+                else if(status === 'Refilling') colors = 'bg-[#EFF6FF] text-[#1D4ED8] border-[#BFDBFE]';
+                else colors = 'bg-[#FEFCE8] text-[#854D0E] border-[#FEF08A]'; // In X Min
+            } else if (type === 'park') {
+                elId = `park-${item}`;
+                if(status === 'Available') colors = '<span class="w-2.5 h-2.5 rounded-full bg-[#22C55E]"></span> Available';
+                else if(status === 'Filling Fast') colors = '<span class="w-2.5 h-2.5 rounded-full bg-[#EAB308]"></span> Filling Fast';
+                else if(status === 'Full') colors = '<span class="w-2.5 h-2.5 rounded-full bg-[#EF4444]"></span> Full';
+            }
+
+            const targetEl = document.getElementById(elId);
+            if(targetEl) {
+                if(type === 'food') {
+                    targetEl.innerText = status;
+                    targetEl.className = `text-[10px] md:text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full border transition-colors duration-500 ${colors}`;
+                } else {
+                    targetEl.innerHTML = colors;
+                }
+            }
+        }
+        // --- END BACKEND ADMIN LOGIC ---
+
+        // --- Intersection Observer for Scroll Animations ---
+        function initScrollAnimations() {
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('active');
+                        }, index * 100); 
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { 
+                threshold: 0.1, 
+                rootMargin: "0px 0px -50px 0px" 
+            });
+
+            reveals.forEach(reveal => observer.observe(reveal));
+        }
+
+        // --- Music Toggle ---
+        let isMuted = true;
+        function toggleMusic() {
+            const bgMusic = document.getElementById('bg-music');
+            if(isMuted) {
+                bgMusic.play();
+                isMuted = false;
+            } else {
+                bgMusic.pause();
+                isMuted = true;
+            }
+            updateMusicIcon();
+        }
+
+        function updateMusicIcon() {
+            const iconEl = document.getElementById('music-icon');
+            if(isMuted) {
+                iconEl.setAttribute('data-lucide', 'volume-x');
+            } else {
+                iconEl.setAttribute('data-lucide', 'volume-2');
+            }
+            lucide.createIcons({ icons: { 'volume-2': true, 'volume-x': true } });
+        }
+
+        // --- 2. Trailer Modal ---
+        function openTrailer() {
+            const modal = document.getElementById('trailer-modal');
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.style.opacity = '1', 10);
+        }
+        function closeTrailer() {
+            const modal = document.getElementById('trailer-modal');
+            modal.style.opacity = '0';
+            setTimeout(() => modal.classList.add('hidden'), 500);
+        }
+
+        // --- 10. Countdown Timer ---
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = WEDDING_DATE - now;
+
+            if (distance > 0) {
+                document.getElementById('cd-days').innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                document.getElementById('cd-hours').innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                document.getElementById('cd-minutes').innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                document.getElementById('cd-seconds').innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // --- Accordion Logic (Timeline & FAQ) ---
+        function toggleAccordion(id) {
+            const content = document.getElementById(`content-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+            
+            // Check if it's already open
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                // Reset rotation based on type (chevron for FAQ, plus for timeline)
+                if (id.startsWith('faq')) {
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    icon.style.transform = 'rotate(0deg)';
+                    icon.setAttribute('data-lucide', 'plus');
+                }
+            } else {
+                // If it's a timeline, close other timelines. If it's a FAQ, close other FAQs
+                const groupPrefix = id.split('-')[0]; // 'event' or 'faq'
+                
+                document.querySelectorAll(`[id^="content-${groupPrefix}-"].open`).forEach(el => {
+                    el.classList.remove('open');
+                });
+                
+                document.querySelectorAll(`[id^="icon-${groupPrefix}-"]`).forEach(el => {
+                    el.style.transform = 'rotate(0deg)';
+                    if(groupPrefix === 'event') el.setAttribute('data-lucide', 'plus');
+                });
+                
+                // Open clicked
+                content.classList.add('open');
+                icon.style.transform = 'rotate(180deg)';
+                if(groupPrefix === 'event') {
+                    setTimeout(() => icon.setAttribute('data-lucide', 'minus'), 150);
+                }
+            }
+            setTimeout(() => lucide.createIcons(), 160);
+        }
+
+        // --- Bonus: Story Mode ---
+        const STORY_SLIDES = [
+            { chapter: "Chapter I", title: "The First Glance", desc: "We met at a mutual friend's art exhibition. Amidst the crowd and colors, our eyes met, and the rest of the world just faded away.", img: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1200&auto=format&fit=crop" },
+            { chapter: "Chapter II", title: "A Perfect First Date", desc: "A simple cup of coffee turned into hours of endless conversation. We realized very quickly we had found something truly special in each other.", img: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1200&auto=format&fit=crop" },
+            { chapter: "Chapter III", title: "The Proposal", desc: "Under a canopy of stars on our favorite beach, Aarav got down on one knee. It was the easiest and most beautiful 'Yes' Kiara ever said.", img: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1200&auto=format&fit=crop" },
+            { chapter: "Chapter IV", title: "Forever Begins", desc: "Now, we are thrilled to invite you to witness the beginning of our forever. We can't wait to celebrate this magical day with you.", img: "https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=1200&auto=format&fit=crop" }
+        ];
+        let currentSlide = 0;
+
+        function initStory() {
+            const container = document.getElementById('story-indicators');
+            container.innerHTML = '';
+            STORY_SLIDES.forEach((_, idx) => {
+                container.innerHTML += `<div id="story-dot-${idx}" class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-cream-200 transition-all duration-300 cursor-pointer" onclick="goToStory(${idx})"></div>`;
+            });
+            renderStory();
+        }
+
+        function renderStory() {
+            const imgEl = document.getElementById('story-img');
+            const chapterEl = document.getElementById('story-chapter');
+            const titleEl = document.getElementById('story-title');
+            const descEl = document.getElementById('story-desc');
+
+            imgEl.style.opacity = '0.3';
+            titleEl.style.opacity = '0';
+            titleEl.style.transform = 'translateY(10px)';
+            descEl.style.opacity = '0';
+            descEl.style.transform = 'translateY(10px)';
+            chapterEl.style.opacity = '0';
+
+            setTimeout(() => {
+                imgEl.src = STORY_SLIDES[currentSlide].img;
+                chapterEl.innerText = STORY_SLIDES[currentSlide].chapter;
+                titleEl.innerText = STORY_SLIDES[currentSlide].title;
+                descEl.innerText = STORY_SLIDES[currentSlide].desc;
+
+                imgEl.style.opacity = '1';
+                titleEl.style.opacity = '1';
+                titleEl.style.transform = 'translateY(0)';
+                descEl.style.opacity = '1';
+                descEl.style.transform = 'translateY(0)';
+                chapterEl.style.opacity = '1';
+            }, 300);
+            
+            STORY_SLIDES.forEach((_, idx) => {
+                const dot = document.getElementById(`story-dot-${idx}`);
+                if (idx === currentSlide) {
+                    dot.className = 'w-6 h-2 md:w-8 md:h-3 rounded-full bg-gold-500 transition-all duration-300';
+                } else {
+                    dot.className = 'w-2 h-2 md:w-3 md:h-3 rounded-full bg-cream-200 hover:bg-gold-300 transition-all duration-300 cursor-pointer';
+                }
+            });
+        }
+
+        function nextStory() {
+            currentSlide = (currentSlide + 1) % STORY_SLIDES.length;
+            renderStory();
+        }
+
+        function prevStory() {
+            currentSlide = (currentSlide - 1 + STORY_SLIDES.length) % STORY_SLIDES.length;
+            renderStory();
+        }
+        
+        function goToStory(idx) {
+            currentSlide = idx;
+            renderStory();
+        }
+
+        initStory();
+
+        // --- RSVP Submission (Saving to LocalStorage) ---
+        function submitRSVP(e) {
+            e.preventDefault();
+            const btn = document.getElementById('rsvp-submit-btn');
+            const originalHTML = btn.innerHTML;
+            
+            const rsvpData = {
+                name: document.getElementById('rsvp-name').value,
+                status: document.getElementById('rsvp-attend').value,
+                guests: document.getElementById('rsvp-guests').value || 1,
+                song: document.getElementById('rsvp-song').value,
+                diet: document.getElementById('rsvp-diet').value,
+                date: new Date().toLocaleDateString()
+            };
+
+            btn.innerHTML = '<i data-lucide="loader-2" class="w-4 h-4 md:w-5 md:h-5 animate-spin"></i> Processing...';
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                // Save to Storage
+                const existingRSVPs = JSON.parse(localStorage.getItem('weddingRSVPs') || '[]');
+                existingRSVPs.unshift(rsvpData);
+                localStorage.setItem('weddingRSVPs', JSON.stringify(existingRSVPs));
+
+                btn.innerHTML = '<i data-lucide="check" class="w-4 h-4 md:w-5 md:h-5"></i> RSVP Confirmed';
+                btn.classList.add('bg-green-600', 'hover:bg-green-700', 'border-green-600');
+                lucide.createIcons();
+                e.target.reset();
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.classList.remove('bg-green-600', 'hover:bg-green-700', 'border-green-600');
+                    lucide.createIcons();
+                    showCustomAlert('RSVP Received!', 'Thank you! We have securely received your response. We can\'t wait to celebrate with you.', 'mail-check');
+                }, 1500);
+            }, 1500);
+        }
+
+        // --- Wish Modal & Guestbook logic (Saving to LocalStorage) ---
+        function renderGuestbook() {
+            const container = document.getElementById('guestbook-container');
+            const wishes = JSON.parse(localStorage.getItem('weddingWishes') || '[]');
+            
+            if(wishes.length === 0) {
+                container.innerHTML = '<div class="w-full text-center py-10 text-cream-800/50 italic text-sm">Be the first to leave a love note!</div>';
+                return;
+            }
+
+            container.innerHTML = wishes.map(wish => {
+                const initial = wish.name.charAt(0).toUpperCase();
+                return `
+                <div class="min-w-[280px] md:min-w-[400px] bg-white border border-cream-200 p-6 md:p-10 rounded-2xl shadow-sm snap-start relative animate-pop-in">
+                    <i data-lucide="quote" class="absolute top-6 right-6 w-8 h-8 md:w-12 md:h-12 text-cream-100 fill-current"></i>
+                    <p class="text-cream-800 text-sm md:text-lg italic leading-relaxed mb-6 md:mb-8 font-serif">"${wish.message}"</p>
+                    <div class="flex items-center gap-3 md:gap-4 border-t border-cream-100 pt-4 md:pt-6">
+                        <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gold-100 flex items-center justify-center text-gold-600 font-serif font-bold text-xs md:text-sm">${initial}</div>
+                        <span class="text-xs md:text-sm font-bold uppercase tracking-wider text-cream-900">${wish.name}</span>
+                    </div>
+                </div>
+                `;
+            }).join('');
+            lucide.createIcons();
+        }
+
+        function openWishModal() {
+            const modal = document.getElementById('wish-modal');
+            modal.classList.remove('hidden');
+            void modal.offsetWidth;
+            modal.classList.add('open');
+            modal.style.opacity = '1';
+        }
+        function closeWishModal() {
+            const modal = document.getElementById('wish-modal');
+            modal.classList.remove('open');
+            modal.style.opacity = '0';
+            setTimeout(() => modal.classList.add('hidden'), 400);
+            document.getElementById('wish-form').reset();
+        }
+        function submitWish(e) {
+            e.preventDefault();
+            const name = document.getElementById('wish-name').value;
+            const message = document.getElementById('wish-message').value;
+            
+            const wishes = JSON.parse(localStorage.getItem('weddingWishes') || '[]');
+            wishes.unshift({ name, message, date: new Date().toLocaleDateString() });
+            localStorage.setItem('weddingWishes', JSON.stringify(wishes));
+
+            renderGuestbook(); // Re-render frontend
+            document.getElementById('guestbook-container').scrollTo({ left: 0, behavior: 'smooth' });
+
+            const btn = document.getElementById('wish-submit-btn');
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i data-lucide="check" class="w-4 h-4 md:w-5 md:h-5"></i> Posted!';
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                closeWishModal();
+                setTimeout(() => btn.innerHTML = originalHTML, 400);
+            }, 1000);
+        }
+
+        // --- 9. AI Assistant ---
+        let chatOpen = false;
+        function toggleChat() {
+            const container = document.getElementById('ai-chat-container');
+            const windowEl = document.getElementById('chat-window');
+            
+            if(!chatOpen) {
+                container.classList.remove('hidden');
+                setTimeout(() => {
+                    windowEl.classList.remove('scale-95', 'opacity-0');
+                    windowEl.classList.add('scale-100', 'opacity-100');
+                }, 10);
+            } else {
+                windowEl.classList.remove('scale-100', 'opacity-100');
+                windowEl.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => {
+                    container.classList.add('hidden');
+                }, 300);
+            }
+            chatOpen = !chatOpen;
+        }
+
+        function handleChatEnter(e) {
+            if(e.key === 'Enter') sendMessage();
+        }
+
+        const knowledgeBase = [
+            { keywords: ['time', 'dinner', 'food', 'eat', 'hungry'], response: "Dinner is served after the Ceremony, starting at 9:00 PM on Feb 7th. The Punjabi and Chinese counters are currently OPEN! 🍽️" },
+            { keywords: ['sangeet', 'music', 'dance', 'party'], response: "The Sangeet is at the Crystal Ballroom on Feb 6th at 8:00 PM. Get ready to dance! 💃🕺" },
+            { keywords: ['dress', 'wear', 'attire', 'clothes', 'outfit'], response: "For the Wedding Ceremony, the dress code is Traditional Royal. For the Sangeet, it is Indo-Western Glitz, and for Mehndi, wear Green & Yellow! ✨" },
+            { keywords: ['parking', 'car', 'drive', 'park', 'vehicle'], response: "Parking A (VIP) is currently available. Valet is full. You can click 'Open Map' in the Parking section for directions! 🚗" },
+            { keywords: ['location', 'venue', 'map', 'where', 'place'], response: "The main Wedding is at Heritage Palace. Sangeet is at Crystal Ballroom, and Mehndi is at The Royal Gardens. 📍" },
+            { keywords: ['gift', 'registry', 'present', 'fund', 'contribute'], response: "Your presence is our present! But if you wish to contribute, you can find our Honeymoon Fund and Home Essentials registry below the gallery. 🎁" },
+            { keywords: ['rsvp', 'attend', 'yes', 'no', 'confirm'], response: "You can confirm your attendance using the RSVP form just above the Gallery section. Please respond by Jan 15th! 💌" },
+            { keywords: ['hi', 'hello', 'hey', 'greetings'], response: "Hello there! I am so delighted to help you with the wedding details today! ✨" }
+        ];
+
+        function getBotResponse(input) {
+            const lowerInput = input.toLowerCase();
+            for (const entry of knowledgeBase) {
+                if (entry.keywords.some(kw => lowerInput.includes(kw))) {
+                    return entry.response;
+                }
+            }
+            return "I am not quite sure about that! I can help you with the timeline, venues, dress codes, RSVP, food status, or registry.";
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const text = input.value.trim();
+            if(!text) return;
+
+            appendMessage(text, 'user');
+            input.value = '';
+
+            const typingInd = document.getElementById('typing-indicator');
+            typingInd.classList.remove('hidden');
+
+            setTimeout(() => {
+                typingInd.classList.add('hidden');
+                const response = getBotResponse(text);
+                appendMessage(response, 'bot');
+            }, 1000 + Math.random() * 800);
+        }
+
+        function appendMessage(text, sender) {
+            const chatBox = document.getElementById('chat-messages');
+            const isBot = sender === 'bot';
+            
+            const msgHTML = isBot ? `
+                <div class="flex items-start gap-2 md:gap-3 animate-fade-in-up">
+                    <div class="w-6 h-6 md:w-8 md:h-8 rounded-full bg-gold-50 flex-shrink-0 flex items-center justify-center text-gold-600 font-serif italic text-xs md:text-sm border border-gold-100">N</div>
+                    <div class="bg-cream-50 border border-cream-100 p-3 md:p-4 rounded-2xl rounded-tl-none text-cream-900 shadow-sm text-xs md:text-sm leading-relaxed font-medium">${text}</div>
+                </div>
+            ` : `
+                <div class="flex items-start justify-end gap-2 md:gap-3 animate-fade-in-up">
+                    <div class="bg-gold-500 text-white p-3 md:p-4 rounded-2xl rounded-tr-none shadow-sm text-xs md:text-sm leading-relaxed font-medium">${text}</div>
+                </div>
+            `;
+            
+            chatBox.innerHTML += msgHTML;
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        // Map Redirects
+        function openMap(locationQuery) {
+            const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationQuery)}`;
+            window.open(url, '_blank');
+        }
+
+        // Uber Deep Link Generator
+        function openUber(destination) {
+            // This deep link will open the Uber App with the destination pre-filled
+            const url = `https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=${encodeURIComponent(destination)}`;
+            window.open(url, '_blank');
+        }
+
+        // Google Calendar Generator
+        function addToCalendar(title, startDateStr, location) {
+            const endDateStr = (parseInt(startDateStr.substring(0,8)) + 1).toString() + "T000000"; 
+            const details = "We can't wait to celebrate with you! - Aarav & Kiara";
+            const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDateStr}/${endDateStr}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
+            window.open(url, '_blank');
+        }
+
+        // File Upload (Gallery)
+        function triggerUpload() {
+            document.getElementById('gallery-upload-input').click();
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if(file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const grid = document.getElementById('gallery-grid');
+                    const newDiv = document.createElement('div');
+                    newDiv.className = 'overflow-hidden rounded-lg shadow-sm group cursor-pointer animate-pop-in';
+                    newDiv.innerHTML = `<img src="${e.target.result}" class="w-full h-48 md:h-72 lg:h-80 object-cover group-hover:scale-110 transition-all duration-700" alt="Uploaded photo">`;
+                    grid.prepend(newDiv);
+                    
+                    setTimeout(() => showCustomAlert('Upload Successful', 'Your beautiful photo has been successfully added to the live gallery.', 'check-circle'), 200);
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Registry Modal
+        function openRegistry(fundName) {
+            const modal = document.getElementById('registry-modal');
+            document.getElementById('registry-title').innerText = fundName;
+            modal.classList.remove('hidden');
+            void modal.offsetWidth;
+            modal.classList.add('open');
+            modal.style.opacity = '1';
+        }
+        
+        function closeRegistry() {
+            const modal = document.getElementById('registry-modal');
+            modal.classList.remove('open');
+            modal.style.opacity = '0';
+            setTimeout(() => modal.classList.add('hidden'), 400);
+            document.getElementById('contribution-amount').value = '';
+        }
+
+        function processContribution() {
+            const amount = document.getElementById('contribution-amount').value;
+            if(!amount || amount <= 0) {
+                showCustomAlert('Invalid Amount', 'Please enter a valid contribution amount to proceed.', 'alert-circle');
+                return;
+            }
+            const btn = document.getElementById('process-btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 md:w-6 md:h-6 animate-spin"></i> Processing...';
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                btn.innerHTML = '<i data-lucide="check-circle" class="w-5 h-5 md:w-6 md:h-6"></i> Thank You!';
+                lucide.createIcons();
+                btn.classList.add('bg-green-600', 'border-green-600', 'text-white');
+                btn.classList.remove('bg-gold-500');
+                
+                setTimeout(() => {
+                    closeRegistry();
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        btn.classList.remove('bg-green-600', 'border-green-600');
+                        btn.classList.add('bg-gold-500');
+                        
+                        setTimeout(() => showCustomAlert('Contribution Received', 'Thank you so much for your generous gift!', 'heart'), 300);
+                    }, 400);
+                }, 1500);
+            }, 2000);
+        }
+
+    </script>
+</body>
+</html>
