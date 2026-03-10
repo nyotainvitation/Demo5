@@ -69,6 +69,16 @@
         html {
             scroll-behavior: smooth;
         }
+        
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            margin: 0;
+        }
+
+        body.modal-open {
+            overflow: hidden !important;
+        }
 
         /* Custom Scrollbar */
         .hide-scrollbar::-webkit-scrollbar { display: none; }
@@ -107,7 +117,7 @@
         }
     </style>
 </head>
-<body class="bg-cream-100 text-cream-800 font-sans antialiased selection:bg-gold-500/20">
+<body class="bg-cream-100 text-cream-800 font-sans antialiased selection:bg-gold-500/20 overflow-x-hidden w-full">
 
     <!-- 1️⃣ Personalized Entry Experience -->
     <div id="intro-screen" class="fixed inset-0 z-[100] bg-cream-50 flex items-center justify-center overflow-hidden transition-all duration-1000">
@@ -138,7 +148,7 @@
     </div>
 
     <!-- MAIN APP CONTAINER -->
-    <div id="main-app" class="w-full bg-cream-50 min-h-screen shadow-2xl overflow-x-hidden relative opacity-0 transition-opacity duration-1000 hidden">
+    <div id="main-app" class="w-full bg-cream-50 min-h-screen shadow-2xl relative opacity-0 transition-opacity duration-1000 hidden">
         
         <audio id="bg-music" loop>
             <source src="Indian 1.wav" type="audio/mpeg">
@@ -513,7 +523,7 @@
 
             <!-- 2-COLUMN LAYOUT ON DESKTOP (Food & Parking) -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-20 max-w-7xl mx-auto pt-10">
-                <!-- 🍽 4️⃣ Live Food Counter Status -->
+                <!-- 🍽 Live Food Counter Status -->
                 <section class="reveal w-full">
                     <div class="flex flex-col items-center mb-8 text-center">
                         <i data-lucide="utensils-crossed" class="w-6 h-6 md:w-8 md:h-8 text-gold-400 mb-3"></i>
@@ -540,7 +550,7 @@
                     <p class="text-[10px] md:text-xs uppercase tracking-widest text-cream-800/40 text-center mt-6 md:mt-8 font-semibold">Live Event Controller Synced</p>
                 </section>
 
-                <!-- 🚗 6️⃣ Smart Parking Guide -->
+                <!-- 🚗 Smart Parking Guide -->
                 <section class="reveal w-full">
                     <div class="flex flex-col items-center mb-8 text-center">
                         <i data-lucide="car-front" class="w-6 h-6 md:w-8 md:h-8 text-gold-400 mb-3"></i>
@@ -677,7 +687,7 @@
                 </div>
             </section>
 
-            <!-- 📸 5️⃣ Photographer Mode -->
+            <!-- 📸 Photographer Mode -->
             <section class="max-w-7xl mx-auto reveal pt-10">
                 <div class="flex items-end justify-between mb-8 md:mb-12 border-b border-cream-200 pb-6">
                     <div>
@@ -724,7 +734,7 @@
                 </div>
             </section>
 
-            <!-- 🎁 7️⃣ Gift Registry -->
+            <!-- 🎁 Gift Registry -->
             <section class="pb-12 text-center max-w-4xl mx-auto reveal pt-10">
                 <i data-lucide="gift" class="w-8 h-8 md:w-12 md:h-12 text-gold-400 mx-auto mb-4 md:mb-6"></i>
                 <h3 class="text-4xl md:text-5xl lg:text-6xl font-serif text-cream-900 italic mb-3">Registry</h3>
@@ -854,7 +864,7 @@
                     <i data-lucide="settings" class="w-6 h-6 text-gold-500"></i>
                     <div>
                         <h4 class="text-xl md:text-2xl font-serif italic text-cream-900 leading-none">Event Backend</h4>
-                        <p class="text-[10px] uppercase tracking-widest text-cream-800/60 font-semibold mt-1">Management Dashboard</p>
+                        <p class="text-[10px] uppercase tracking-widest text-cream-800/60 font-semibold mt-1">Cloud Synced Dashboard</p>
                     </div>
                 </div>
                 <button onclick="closeAdminDashboard()" class="text-cream-800/50 hover:text-gold-600 transition-colors p-2 bg-white rounded-full border border-cream-200 shadow-sm">
@@ -952,7 +962,7 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div class="bg-white border border-cream-200 p-4 rounded-xl flex items-center justify-between shadow-sm">
                                 <span class="font-bold text-sm text-cream-900">Punjabi Counter</span>
-                                <select onchange="updateLiveStatus('food', 'punjabi', this.value)" class="bg-cream-50 border border-cream-200 rounded-lg p-2 text-xs font-bold uppercase tracking-wider outline-none focus:border-gold-400">
+                                <select id="admin-food-punjabi" onchange="updateLiveStatus('food', 'punjabi', this.value)" class="bg-cream-50 border border-cream-200 rounded-lg p-2 text-xs font-bold uppercase tracking-wider outline-none focus:border-gold-400">
                                     <option value="Open">Open</option>
                                     <option value="Refilling">Refilling</option>
                                     <option value="In 5 Min">In 5 Min</option>
@@ -961,7 +971,7 @@
                             </div>
                             <div class="bg-white border border-cream-200 p-4 rounded-xl flex items-center justify-between shadow-sm">
                                 <span class="font-bold text-sm text-cream-900">Chinese Wok</span>
-                                <select onchange="updateLiveStatus('food', 'chinese', this.value)" class="bg-cream-50 border border-cream-200 rounded-lg p-2 text-xs font-bold uppercase tracking-wider outline-none focus:border-gold-400">
+                                <select id="admin-food-chinese" onchange="updateLiveStatus('food', 'chinese', this.value)" class="bg-cream-50 border border-cream-200 rounded-lg p-2 text-xs font-bold uppercase tracking-wider outline-none focus:border-gold-400">
                                     <option value="Open">Open</option>
                                     <option value="Refilling">Refilling</option>
                                     <option value="In 5 Min">In 5 Min</option>
@@ -994,7 +1004,7 @@
                         <div class="space-y-3 max-w-xl">
                             <div class="bg-white border border-cream-200 p-4 rounded-xl flex items-center justify-between shadow-sm">
                                 <span class="font-bold text-sm text-cream-900">Parking A - VIP</span>
-                                <select onchange="updateLiveStatus('park', 'a', this.value)" class="bg-cream-50 border border-cream-200 rounded-lg p-2 text-xs font-bold uppercase tracking-wider outline-none focus:border-gold-400">
+                                <select id="admin-park-a" onchange="updateLiveStatus('park', 'a', this.value)" class="bg-cream-50 border border-cream-200 rounded-lg p-2 text-xs font-bold uppercase tracking-wider outline-none focus:border-gold-400">
                                     <option value="Available">Available</option>
                                     <option value="Filling Fast">Filling Fast</option>
                                     <option value="Full">Full</option>
@@ -1023,7 +1033,7 @@
         </div>
     </div>
 
-    <!-- 🧠 9️⃣ AI Wedding Assistant (ADVANCED NYOTA) -->
+    <!-- 🧠 AI Wedding Assistant (ADVANCED NYOTA) -->
     <div id="ai-chat-container" class="fixed bottom-24 right-4 md:right-8 z-50 flex flex-col items-end hidden">
         <div class="bg-white border border-cream-200 w-[320px] md:w-[400px] h-[500px] md:h-[550px] rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] mb-4 flex flex-col overflow-hidden transform scale-95 opacity-0 transition-all duration-300 origin-bottom-right" id="chat-window">
             
@@ -1131,16 +1141,109 @@
     </div>
 
 
-    <!-- SCRIPTS -->
-    <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
+    <!-- CLOUD FIREBASE IMPLEMENTATION + SCRIPTS -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, doc, setDoc, getDocs, addDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Constants
+        // Global State & Firebase Initialization
+        let app, auth, db, appId, user;
+        let globalInvites = [];
+        let globalRSVPs = [];
+        let globalWishes = [];
+
+        try {
+            const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+            app = initializeApp(firebaseConfig);
+            auth = getAuth(app);
+            db = getFirestore(app);
+            appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+            
+            async function initAuth() {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+            }
+            initAuth();
+
+            onAuthStateChanged(auth, (currentUser) => {
+                user = currentUser;
+                if (user) {
+                    setupRealtimeListeners();
+                }
+            });
+        } catch(e) { 
+            console.error("Firebase init failed", e); 
+        }
+
+        // Realtime Sync (Data persistence across all devices automatically)
+        function setupRealtimeListeners() {
+            if(!user) return;
+            
+            // Listen to Invites
+            const invitesRef = collection(db, 'artifacts', appId, 'public', 'data', 'invites');
+            onSnapshot(invitesRef, (snapshot) => {
+                globalInvites = snapshot.docs.map(doc => ({id: doc.id, ...doc.data()}));
+                globalInvites.sort((a,b) => b.timestamp - a.timestamp);
+                loadGeneratedLinks();
+            }, (err) => console.error(err));
+
+            // Listen to RSVPs
+            const rsvpsRef = collection(db, 'artifacts', appId, 'public', 'data', 'rsvps');
+            onSnapshot(rsvpsRef, (snapshot) => {
+                globalRSVPs = snapshot.docs.map(doc => ({id: doc.id, ...doc.data()}));
+                globalRSVPs.sort((a,b) => b.timestamp - a.timestamp);
+                renderAdminRSVPs();
+            }, (err) => console.error(err));
+
+            // Listen to Guestbook Wishes
+            const wishesRef = collection(db, 'artifacts', appId, 'public', 'data', 'wishes');
+            onSnapshot(wishesRef, (snapshot) => {
+                globalWishes = snapshot.docs.map(doc => ({id: doc.id, ...doc.data()}));
+                globalWishes.sort((a,b) => b.timestamp - a.timestamp);
+                renderGuestbook();
+                renderAdminGuestbook();
+            }, (err) => console.error(err));
+
+            // Listen to Live Event Status updates
+            const liveRef = collection(db, 'artifacts', appId, 'public', 'data', 'liveEvent');
+            onSnapshot(liveRef, (snapshot) => {
+                snapshot.forEach(docSnap => {
+                    const data = docSnap.data();
+                    if(docSnap.id === 'status') {
+                        if(data.food) Object.keys(data.food).forEach(k => applyLiveUI('food', k, data.food[k]));
+                        if(data.park) Object.keys(data.park).forEach(k => applyLiveUI('park', k, data.park[k]));
+                    }
+                });
+            }, (err) => console.error(err));
+        }
+
+        // Initialize Lucide Icons
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            
+            const params = new URLSearchParams(window.location.search);
+            const name = params.get('guest');
+            if (name) {
+                currentGuestName = name;
+                document.getElementById('guest-name-display').innerText = `${name}`;
+                document.getElementById('guest-personalized-msg').innerText = `We would be absolutely thrilled to have you and your family join us in celebrating the beginning of our forever.`;
+                document.getElementById('nyota-greeting').innerText = `Welcome, ${name}! I am Nyota, the official wedding assistant. How can I assist you with the details today?`;
+            }
+        });
+
+        // Modals & Scrollbar Fix (Locking background scroll to prevent 2 scrollbars)
+        function lockScroll() { document.body.classList.add('modal-open'); }
+        function unlockScroll() { document.body.classList.remove('modal-open'); }
+
         const WEDDING_DATE = new Date(new Date().getTime() + 12 * 24 * 60 * 60 * 1000); 
 
         // --- Custom Modal Logic ---
-        function showCustomAlert(title, message, iconType) {
+        window.showCustomAlert = function(title, message, iconType) {
+            lockScroll();
             document.getElementById('custom-alert-title').innerText = title;
             document.getElementById('custom-alert-msg').innerText = message;
             
@@ -1155,15 +1258,16 @@
             modal.style.opacity = '1';
         }
 
-        function closeCustomAlert() {
+        window.closeCustomAlert = function() {
             const modal = document.getElementById('custom-alert-modal');
             modal.classList.remove('open');
             modal.style.opacity = '0';
-            setTimeout(() => modal.classList.add('hidden'), 400);
+            setTimeout(() => { modal.classList.add('hidden'); unlockScroll(); }, 400);
         }
 
         let confirmCallbackAction = null;
-        function showCustomConfirm(title, message, callback) {
+        window.showCustomConfirm = function(title, message, callback) {
+            lockScroll();
             document.getElementById('custom-confirm-title').innerText = title;
             document.getElementById('custom-confirm-msg').innerText = message;
             confirmCallbackAction = callback;
@@ -1180,46 +1284,16 @@
             };
         }
 
-        function closeCustomConfirm() {
+        window.closeCustomConfirm = function() {
             const modal = document.getElementById('custom-confirm-modal');
             modal.classList.remove('open');
             modal.style.opacity = '0';
-            setTimeout(() => modal.classList.add('hidden'), 400);
+            setTimeout(() => { modal.classList.add('hidden'); unlockScroll(); }, 400);
         }
-        
-        // --- 1. System Initializer ---
+
         let currentGuestName = "Honored Guest";
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const params = new URLSearchParams(window.location.search);
-            const name = params.get('guest');
-            if (name) {
-                currentGuestName = name;
-                document.getElementById('guest-name-display').innerText = `${name}`;
-                document.getElementById('guest-personalized-msg').innerText = `We would be absolutely thrilled to have you and your family join us in celebrating the beginning of our forever.`;
-                
-                // Personalize Nyota AI
-                document.getElementById('nyota-greeting').innerText = `Welcome, ${name}! I am Nyota, the official wedding assistant. How can I assist you with the details today?`;
-            }
-            
-            seedDefaultData();
-            loadGeneratedLinks();
-            renderAdminRSVPs();
-            renderGuestbook();
-        });
-
-        function seedDefaultData() {
-            if(!localStorage.getItem('weddingWishes')) {
-                const defaultWishes = [
-                    { name: "Priya & Rahul", message: "Wishing you a lifetime of love and happiness. Can't wait for the big day!", date: new Date().toLocaleDateString() },
-                    { name: "Aman Verma", message: "May your years together be as beautiful as the love you share today. Cheers!", date: new Date().toLocaleDateString() },
-                    { name: "Sneha & Family", message: "So incredibly happy for you both. The Sangeet is going to be epic!", date: new Date().toLocaleDateString() }
-                ];
-                localStorage.setItem('weddingWishes', JSON.stringify(defaultWishes));
-            }
-        }
-
-        function enterApp() {
+        window.enterApp = function() {
             const introScreen = document.getElementById('intro-screen');
             const mainApp = document.getElementById('main-app');
             const fab = document.getElementById('ai-fab');
@@ -1234,7 +1308,7 @@
                 mainApp.style.opacity = '1';
                 initScrollAnimations();
                 
-                bgMusic.play().catch(e => console.log("Audio autoplay blocked by browser."));
+                bgMusic.play().catch(e => console.log("Audio autoplay blocked."));
                 isMuted = false;
                 updateMusicIcon();
 
@@ -1243,8 +1317,9 @@
             }, 800);
         }
 
-        // --- ENTIRE BACKEND: ADMIN LOGIC ---
-        function openAdminLogin() {
+        // --- ENTIRE CLOUD BACKEND LOGIC ---
+        window.openAdminLogin = function() {
+            lockScroll();
             const modal = document.getElementById('admin-login-modal');
             modal.classList.remove('hidden');
             void modal.offsetWidth;
@@ -1252,42 +1327,39 @@
             modal.style.opacity = '1';
         }
 
-        function closeAdminLogin() {
+        window.closeAdminLogin = function() {
             const modal = document.getElementById('admin-login-modal');
             modal.classList.remove('open');
             modal.style.opacity = '0';
-            setTimeout(() => modal.classList.add('hidden'), 400);
+            setTimeout(() => { modal.classList.add('hidden'); unlockScroll(); }, 400);
             document.getElementById('admin-password').value = '';
         }
 
-        function verifyAdmin() {
+        window.verifyAdmin = function() {
             const pwd = document.getElementById('admin-password').value;
             if(pwd === '1234') { 
                 closeAdminLogin();
                 setTimeout(() => {
+                    lockScroll();
                     const dashboard = document.getElementById('admin-dashboard-modal');
                     dashboard.classList.remove('hidden');
                     void dashboard.offsetWidth;
                     dashboard.classList.add('open');
                     dashboard.style.opacity = '1';
-                    // Refresh data on open
-                    loadGeneratedLinks();
-                    renderAdminRSVPs();
-                    renderAdminGuestbook();
                 }, 400);
             } else {
                 showCustomAlert('Access Denied', 'Incorrect passcode entered. Please try again.', 'lock');
             }
         }
 
-        function closeAdminDashboard() {
+        window.closeAdminDashboard = function() {
             const modal = document.getElementById('admin-dashboard-modal');
             modal.classList.remove('open');
             modal.style.opacity = '0';
-            setTimeout(() => modal.classList.add('hidden'), 400);
+            setTimeout(() => { modal.classList.add('hidden'); unlockScroll(); }, 400);
         }
 
-        function switchAdminTab(tabName) {
+        window.switchAdminTab = function(tabName) {
             const tabs = ['invites', 'rsvps', 'guestbook', 'live'];
             tabs.forEach(t => {
                 const btn = document.getElementById(`tab-btn-${t}`);
@@ -1307,8 +1379,9 @@
             });
         }
 
-        // Backend: Generate Invites
-        function generateBulkInvites() {
+        // CLOUD DB: Generate Invites
+        window.generateBulkInvites = async function() {
+            if(!user) return;
             const textarea = document.getElementById('bulk-guest-names');
             const inputData = textarea.value.trim();
             
@@ -1327,22 +1400,22 @@
                 baseUrl = baseUrl.split('?')[0];
             }
 
-            const existingLinks = JSON.parse(localStorage.getItem('weddingInvites') || '[]');
-            const currentDate = new Date().toLocaleDateString();
             let newlyAddedCount = 0;
+            const invitesRef = collection(db, 'artifacts', appId, 'public', 'data', 'invites');
 
-            names.forEach(name => {
+            for (const name of names) {
                 const inviteLink = `${baseUrl}?guest=${encodeURIComponent(name)}`;
                 const waMessage = `Dear ${name},%0A%0AWe joyfully invite you and your family to celebrate the wedding of Aarav & Kiara.%0A%0APlease view your personalized digital invitation here:%0A${inviteLink}%0A%0AWe look forward to seeing you!`;
                 const waApiLink = `https://wa.me/?text=${waMessage}`;
-                existingLinks.unshift({ name, inviteLink, waApiLink, date: currentDate });
+                
+                await addDoc(invitesRef, {
+                    name, inviteLink, waApiLink, timestamp: Date.now(), date: new Date().toLocaleDateString()
+                });
                 newlyAddedCount++;
-            });
+            }
 
-            localStorage.setItem('weddingInvites', JSON.stringify(existingLinks));
             textarea.value = '';
-            loadGeneratedLinks(); 
-            showCustomAlert('Success!', `Successfully generated ${newlyAddedCount} personalized invite link(s).`, 'check-circle');
+            showCustomAlert('Success!', `Successfully generated and saved ${newlyAddedCount} personalized invite link(s) to the cloud.`, 'check-circle');
         }
 
         function loadGeneratedLinks() {
@@ -1350,16 +1423,15 @@
             const countDisplay = document.getElementById('invite-count');
             if(!list) return;
             
-            const links = JSON.parse(localStorage.getItem('weddingInvites') || '[]');
-            countDisplay.innerText = `(${links.length})`;
+            countDisplay.innerText = `(${globalInvites.length})`;
 
-            if(links.length === 0) {
+            if(globalInvites.length === 0) {
                 list.innerHTML = '<div class="text-center py-8"><i data-lucide="inbox" class="w-8 h-8 mx-auto text-cream-800/20 mb-2"></i><p class="text-xs text-cream-800/50 font-medium">No invites generated yet.</p></div>';
                 lucide.createIcons();
                 return;
             }
 
-            list.innerHTML = links.map((link, index) => `
+            list.innerHTML = globalInvites.map((link) => `
                 <div class="bg-white p-4 rounded-xl border border-cream-200 shadow-sm text-left flex flex-col md:flex-row md:items-center justify-between gap-4 transition-all hover:border-gold-300">
                     <div class="flex-1 min-w-0">
                         <p class="text-sm font-bold text-cream-900 truncate">${link.name}</p>
@@ -1369,13 +1441,13 @@
                         <a href="${link.inviteLink}" target="_blank" title="Preview Invite" class="p-2.5 bg-cream-50 hover:bg-cream-100 rounded-lg text-cream-900 transition-colors border border-cream-200">
                             <i data-lucide="external-link" class="w-4 h-4"></i>
                         </a>
-                        <button onclick="navigator.clipboard.writeText('${link.inviteLink}'); showCustomAlert('Link Copied', 'The invitation link has been successfully copied to your clipboard.', 'copy')" title="Copy Link" class="p-2.5 bg-cream-50 hover:bg-cream-100 rounded-lg text-cream-900 transition-colors border border-cream-200">
+                        <button onclick="navigator.clipboard.writeText('${link.inviteLink}'); window.showCustomAlert('Link Copied', 'The invitation link has been successfully copied to your clipboard.', 'copy')" title="Copy Link" class="p-2.5 bg-cream-50 hover:bg-cream-100 rounded-lg text-cream-900 transition-colors border border-cream-200">
                             <i data-lucide="copy" class="w-4 h-4"></i>
                         </button>
                         <a href="${link.waApiLink}" target="_blank" class="px-4 py-2.5 bg-[#25D366] hover:bg-[#1DA851] text-white text-xs font-bold rounded-lg flex items-center gap-2 transition-colors shadow-md border border-[#1DA851]">
                             <i data-lucide="message-circle" class="w-4 h-4"></i> <span class="hidden sm:inline">WhatsApp</span>
                         </a>
-                        <button onclick="deleteInvite(${index})" title="Delete" class="p-2.5 bg-red-50 hover:bg-red-100 rounded-lg text-red-500 transition-colors ml-1 border border-red-100">
+                        <button onclick="deleteInvite('${link.id}')" title="Delete" class="p-2.5 bg-red-50 hover:bg-red-100 rounded-lg text-red-500 transition-colors ml-1 border border-red-100">
                             <i data-lucide="trash-2" class="w-4 h-4"></i>
                         </button>
                     </div>
@@ -1384,40 +1456,35 @@
             lucide.createIcons();
         }
 
-        function deleteInvite(index) {
-            showCustomConfirm('Delete Invite', 'Are you sure you want to permanently remove this generated invite link?', () => {
-                const links = JSON.parse(localStorage.getItem('weddingInvites') || '[]');
-                links.splice(index, 1);
-                localStorage.setItem('weddingInvites', JSON.stringify(links));
-                loadGeneratedLinks(); 
+        window.deleteInvite = function(id) {
+            showCustomConfirm('Delete Invite', 'Are you sure you want to permanently remove this generated invite link?', async () => {
+                if(!user) return;
+                await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'invites', id));
             });
         }
 
-        function clearAllInvites() {
-            const links = JSON.parse(localStorage.getItem('weddingInvites') || '[]');
-            if(links.length === 0) return;
-
-            showCustomConfirm('Clear All Invites', 'Are you sure you want to delete ALL generated links? This cannot be undone.', () => {
-                localStorage.removeItem('weddingInvites');
-                loadGeneratedLinks();
+        window.clearAllInvites = function() {
+            if(globalInvites.length === 0) return;
+            showCustomConfirm('Clear All Invites', 'Are you sure you want to delete ALL generated links across all devices? This cannot be undone.', async () => {
+                if(!user) return;
+                const snap = await getDocs(collection(db, 'artifacts', appId, 'public', 'data', 'invites'));
+                snap.forEach(d => deleteDoc(d.ref));
             });
         }
 
-        // Backend: RSVPs Logic
+        // CLOUD DB: RSVPs Logic
         function renderAdminRSVPs() {
-            const rsvps = JSON.parse(localStorage.getItem('weddingRSVPs') || '[]');
             const list = document.getElementById('admin-rsvp-list');
             const totalCountEl = document.getElementById('rsvp-total-guests');
-            
             let totalGuests = 0;
             
-            if(rsvps.length === 0) {
+            if(globalRSVPs.length === 0) {
                 list.innerHTML = '<tr><td colspan="5" class="p-8 text-center text-cream-800/50 italic text-xs">No RSVPs received yet.</td></tr>';
                 totalCountEl.innerText = '0';
                 return;
             }
 
-            list.innerHTML = rsvps.map(r => {
+            list.innerHTML = globalRSVPs.map(r => {
                 if(r.status === 'Joyfully Accept') totalGuests += parseInt(r.guests);
                 
                 const statusBadge = r.status === 'Joyfully Accept' 
@@ -1438,30 +1505,29 @@
             totalCountEl.innerText = totalGuests;
         }
 
-        function clearRSVPs() {
-            const rsvps = JSON.parse(localStorage.getItem('weddingRSVPs') || '[]');
-            if(rsvps.length === 0) return;
-            showCustomConfirm('Clear RSVPs', 'Are you sure you want to delete all RSVP data? This action cannot be undone.', () => {
-                localStorage.removeItem('weddingRSVPs');
-                renderAdminRSVPs();
+        window.clearRSVPs = function() {
+            if(globalRSVPs.length === 0) return;
+            showCustomConfirm('Clear RSVPs', 'Are you sure you want to delete all RSVP data from the cloud? This action cannot be undone.', async () => {
+                if(!user) return;
+                const snap = await getDocs(collection(db, 'artifacts', appId, 'public', 'data', 'rsvps'));
+                snap.forEach(d => deleteDoc(d.ref));
             });
         }
 
-        // Backend: Guestbook Moderation
+        // CLOUD DB: Guestbook Moderation
         function renderAdminGuestbook() {
-            const wishes = JSON.parse(localStorage.getItem('weddingWishes') || '[]');
             const list = document.getElementById('admin-guestbook-list');
-            document.getElementById('guestbook-count').innerText = wishes.length;
+            document.getElementById('guestbook-count').innerText = globalWishes.length;
 
-            if(wishes.length === 0) {
+            if(globalWishes.length === 0) {
                 list.innerHTML = '<div class="col-span-2 text-center py-8"><i data-lucide="message-square-off" class="w-8 h-8 mx-auto text-cream-800/20 mb-2"></i><p class="text-xs text-cream-800/50 font-medium">No guestbook entries found.</p></div>';
                 lucide.createIcons();
                 return;
             }
 
-            list.innerHTML = wishes.map((w, index) => `
+            list.innerHTML = globalWishes.map((w) => `
                 <div class="bg-white border border-cream-200 p-5 rounded-xl shadow-sm relative pr-12 group">
-                    <button onclick="deleteAdminWish(${index})" class="absolute top-4 right-4 text-cream-800/20 hover:text-red-500 transition-colors p-1" title="Delete Note">
+                    <button onclick="deleteAdminWish('${w.id}')" class="absolute top-4 right-4 text-cream-800/20 hover:text-red-500 transition-colors p-1" title="Delete Note">
                         <i data-lucide="trash-2" class="w-4 h-4"></i>
                     </button>
                     <p class="text-cream-800 text-sm italic mb-3">"${w.message}"</p>
@@ -1471,18 +1537,21 @@
             lucide.createIcons();
         }
 
-        function deleteAdminWish(index) {
-            showCustomConfirm('Delete Love Note', 'Are you sure you want to remove this message from the public guestbook?', () => {
-                const wishes = JSON.parse(localStorage.getItem('weddingWishes') || '[]');
-                wishes.splice(index, 1);
-                localStorage.setItem('weddingWishes', JSON.stringify(wishes));
-                renderAdminGuestbook();
-                renderGuestbook(); // update frontend instantly
+        window.deleteAdminWish = function(id) {
+            showCustomConfirm('Delete Love Note', 'Are you sure you want to remove this message from the public guestbook?', async () => {
+                if(!user) return;
+                await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'wishes', id));
             });
         }
 
-        // Backend: Live Event Controls
-        function updateLiveStatus(type, item, status) {
+        // CLOUD DB: Live Event Controls
+        window.updateLiveStatus = async function(type, item, status) {
+            if(!user) return;
+            const liveRef = doc(db, 'artifacts', appId, 'public', 'data', 'liveEvent', 'status');
+            await setDoc(liveRef, { [type]: { [item]: status } }, { merge: true });
+        }
+
+        function applyLiveUI(type, item, status) {
             let elId = '';
             let colors = '';
             
@@ -1491,7 +1560,7 @@
                 if(status === 'Open') colors = 'bg-[#F0FDF4] text-[#166534] border-[#BBF7D0]';
                 else if(status === 'Closed') colors = 'bg-[#FEF2F2] text-[#991B1B] border-[#FECACA]';
                 else if(status === 'Refilling') colors = 'bg-[#EFF6FF] text-[#1D4ED8] border-[#BFDBFE]';
-                else colors = 'bg-[#FEFCE8] text-[#854D0E] border-[#FEF08A]'; // In X Min
+                else colors = 'bg-[#FEFCE8] text-[#854D0E] border-[#FEF08A]'; 
             } else if (type === 'park') {
                 elId = `park-${item}`;
                 if(status === 'Available') colors = '<span class="w-2.5 h-2.5 rounded-full bg-[#22C55E]"></span> Available';
@@ -1508,8 +1577,11 @@
                     targetEl.innerHTML = colors;
                 }
             }
+
+            // Sync admin dropdown
+            const selectEl = document.getElementById(`admin-${type}-${item}`);
+            if(selectEl) selectEl.value = status;
         }
-        // --- END BACKEND ADMIN LOGIC ---
 
         // --- Intersection Observer for Scroll Animations ---
         function initScrollAnimations() {
@@ -1523,17 +1595,13 @@
                         observer.unobserve(entry.target);
                     }
                 });
-            }, { 
-                threshold: 0.1, 
-                rootMargin: "0px 0px -50px 0px" 
-            });
-
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
             reveals.forEach(reveal => observer.observe(reveal));
         }
 
         // --- Music Toggle ---
         let isMuted = true;
-        function toggleMusic() {
+        window.toggleMusic = function() {
             const bgMusic = document.getElementById('bg-music');
             if(isMuted) {
                 bgMusic.play();
@@ -1556,22 +1624,22 @@
         }
 
         // --- Trailer Modal ---
-        function openTrailer() {
+        window.openTrailer = function() {
+            lockScroll();
             const modal = document.getElementById('trailer-modal');
             modal.classList.remove('hidden');
             setTimeout(() => modal.style.opacity = '1', 10);
         }
-        function closeTrailer() {
+        window.closeTrailer = function() {
             const modal = document.getElementById('trailer-modal');
             modal.style.opacity = '0';
-            setTimeout(() => modal.classList.add('hidden'), 500);
+            setTimeout(() => { modal.classList.add('hidden'); unlockScroll(); }, 500);
         }
 
         // --- Countdown Timer ---
         function updateCountdown() {
             const now = new Date().getTime();
             const distance = WEDDING_DATE - now;
-
             if (distance > 0) {
                 document.getElementById('cd-days').innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
                 document.getElementById('cd-hours').innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
@@ -1583,7 +1651,7 @@
         updateCountdown();
 
         // --- Accordion Logic ---
-        function toggleAccordion(id) {
+        window.toggleAccordion = function(id) {
             const content = document.getElementById(`content-${id}`);
             const icon = document.getElementById(`icon-${id}`);
             
@@ -1597,26 +1665,19 @@
                 }
             } else {
                 const groupPrefix = id.split('-')[0]; 
-                
-                document.querySelectorAll(`[id^="content-${groupPrefix}-"].open`).forEach(el => {
-                    el.classList.remove('open');
-                });
-                
+                document.querySelectorAll(`[id^="content-${groupPrefix}-"].open`).forEach(el => el.classList.remove('open'));
                 document.querySelectorAll(`[id^="icon-${groupPrefix}-"]`).forEach(el => {
                     el.style.transform = 'rotate(0deg)';
                     if(groupPrefix === 'event') el.setAttribute('data-lucide', 'plus');
                 });
-                
                 content.classList.add('open');
                 icon.style.transform = 'rotate(180deg)';
-                if(groupPrefix === 'event') {
-                    setTimeout(() => icon.setAttribute('data-lucide', 'minus'), 150);
-                }
+                if(groupPrefix === 'event') setTimeout(() => icon.setAttribute('data-lucide', 'minus'), 150);
             }
             setTimeout(() => lucide.createIcons(), 160);
         }
 
-        // --- Bonus: Story Mode ---
+        // --- Story Mode ---
         const STORY_SLIDES = [
             { chapter: "Chapter I", title: "The First Glance", desc: "We met at a mutual friend's art exhibition. Amidst the crowd and colors, our eyes met, and the rest of the world just faded away.", img: "https://i.pinimg.com/736x/99/94/16/999416c5f78b583f267fa328bf762627.jpg" },
             { chapter: "Chapter II", title: "A Perfect First Date", desc: "A simple cup of coffee turned into hours of endless conversation. We realized very quickly we had found something truly special in each other.", img: "https://i.pinimg.com/1200x/0a/39/7d/0a397d636085e90f63f74ab64eeaa0a0.jpg" },
@@ -1640,12 +1701,8 @@
             const titleEl = document.getElementById('story-title');
             const descEl = document.getElementById('story-desc');
 
-            imgEl.style.opacity = '0.3';
-            titleEl.style.opacity = '0';
-            titleEl.style.transform = 'translateY(10px)';
-            descEl.style.opacity = '0';
-            descEl.style.transform = 'translateY(10px)';
-            chapterEl.style.opacity = '0';
+            imgEl.style.opacity = '0.3'; titleEl.style.opacity = '0'; titleEl.style.transform = 'translateY(10px)';
+            descEl.style.opacity = '0'; descEl.style.transform = 'translateY(10px)'; chapterEl.style.opacity = '0';
 
             setTimeout(() => {
                 imgEl.src = STORY_SLIDES[currentSlide].img;
@@ -1653,12 +1710,8 @@
                 titleEl.innerText = STORY_SLIDES[currentSlide].title;
                 descEl.innerText = STORY_SLIDES[currentSlide].desc;
 
-                imgEl.style.opacity = '1';
-                titleEl.style.opacity = '1';
-                titleEl.style.transform = 'translateY(0)';
-                descEl.style.opacity = '1';
-                descEl.style.transform = 'translateY(0)';
-                chapterEl.style.opacity = '1';
+                imgEl.style.opacity = '1'; titleEl.style.opacity = '1'; titleEl.style.transform = 'translateY(0)';
+                descEl.style.opacity = '1'; descEl.style.transform = 'translateY(0)'; chapterEl.style.opacity = '1';
             }, 300);
             
             STORY_SLIDES.forEach((_, idx) => {
@@ -1671,26 +1724,15 @@
             });
         }
 
-        function nextStory() {
-            currentSlide = (currentSlide + 1) % STORY_SLIDES.length;
-            renderStory();
-        }
-
-        function prevStory() {
-            currentSlide = (currentSlide - 1 + STORY_SLIDES.length) % STORY_SLIDES.length;
-            renderStory();
-        }
-        
-        function goToStory(idx) {
-            currentSlide = idx;
-            renderStory();
-        }
-
+        window.nextStory = function() { currentSlide = (currentSlide + 1) % STORY_SLIDES.length; renderStory(); }
+        window.prevStory = function() { currentSlide = (currentSlide - 1 + STORY_SLIDES.length) % STORY_SLIDES.length; renderStory(); }
+        window.goToStory = function(idx) { currentSlide = idx; renderStory(); }
         initStory();
 
-        // --- NEW: Upgraded RSVP UI Swap ---
-        function submitRSVP(e) {
+        // --- Upgraded RSVP via Cloud DB ---
+        window.submitRSVP = async function(e) {
             e.preventDefault();
+            if(!user) return;
             const btn = document.getElementById('rsvp-submit-btn');
             
             const rsvpData = {
@@ -1699,48 +1741,53 @@
                 guests: document.getElementById('rsvp-guests').value || 1,
                 song: document.getElementById('rsvp-song').value,
                 diet: document.getElementById('rsvp-diet').value,
+                timestamp: Date.now(),
                 date: new Date().toLocaleDateString()
             };
 
             btn.innerHTML = '<i data-lucide="loader-2" class="w-4 h-4 md:w-5 md:h-5 animate-spin"></i> Processing...';
             lucide.createIcons();
             
-            setTimeout(() => {
-                // Save to Storage
-                const existingRSVPs = JSON.parse(localStorage.getItem('weddingRSVPs') || '[]');
-                existingRSVPs.unshift(rsvpData);
-                localStorage.setItem('weddingRSVPs', JSON.stringify(existingRSVPs));
-
-                // Transform the UI seamlessly
-                document.getElementById('rsvp-form').style.opacity = '0';
+            try {
+                const rsvpsRef = collection(db, 'artifacts', appId, 'public', 'data', 'rsvps');
+                await addDoc(rsvpsRef, rsvpData);
                 
+                document.getElementById('rsvp-form').style.opacity = '0';
                 setTimeout(() => {
                     document.getElementById('rsvp-form').classList.add('hidden');
                     const successCard = document.getElementById('rsvp-success-card');
                     successCard.classList.remove('hidden');
                 }, 300);
-
-            }, 1500);
+            } catch(error) {
+                console.error("Error saving RSVP:", error);
+                btn.innerHTML = '<i data-lucide="mail" class="w-4 h-4 md:w-5 md:h-5"></i> Send RSVP';
+                showCustomAlert("Error", "Could not send RSVP. Please try again later.", "alert-triangle");
+            }
         }
 
-        // --- Wish Modal & Guestbook logic ---
+        // --- Wish Modal & Cloud Guestbook logic ---
         function renderGuestbook() {
             const container = document.getElementById('guestbook-container');
-            const wishes = JSON.parse(localStorage.getItem('weddingWishes') || '[]');
             
-            if(wishes.length === 0) {
-                container.innerHTML = '<div class="w-full text-center py-10 text-cream-800/50 italic text-sm">Be the first to leave a love note!</div>';
-                return;
+            let wishesToRender = globalWishes;
+            
+            // Render visually cool default placeholders if the database is empty
+            if(globalWishes.length === 0) {
+                wishesToRender = [
+                    { name: "The Sharma Family", message: "Wishing you a lifetime of love and happiness. Your journey together is just beginning, and it already looks so beautiful! 🥂" },
+                    { name: "Priya & Rahul", message: "May your years together be as magical as the love you share today. Can't wait to tear up the dance floor at the Sangeet! ✨" },
+                    { name: "Amit Desai", message: "To the perfect couple: may your everyday be a celebration. So honored to witness your beautiful story unfold. ❤️" }
+                ];
             }
 
-            container.innerHTML = wishes.map(wish => {
+            container.innerHTML = wishesToRender.map(wish => {
                 const initial = wish.name.charAt(0).toUpperCase();
                 return `
-                <div class="min-w-[280px] md:min-w-[400px] bg-white border border-cream-200 p-6 md:p-10 rounded-2xl shadow-sm snap-start relative animate-pop-in">
-                    <i data-lucide="quote" class="absolute top-6 right-6 w-8 h-8 md:w-12 md:h-12 text-cream-100 fill-current"></i>
-                    <p class="text-cream-800 text-sm md:text-lg italic leading-relaxed mb-6 md:mb-8 font-serif">"${wish.message}"</p>
-                    <div class="flex items-center gap-3 md:gap-4 border-t border-cream-100 pt-4 md:pt-6">
-                        <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gold-100 flex items-center justify-center text-gold-600 font-serif font-bold text-xs md:text-sm">${initial}</div>
+                <div class="min-w-[280px] md:min-w-[400px] bg-white border border-cream-200 p-6 md:p-10 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_40px_rgba(181,148,97,0.12)] hover:-translate-y-1 transition-all duration-500 snap-start relative group cursor-pointer">
+                    <i data-lucide="quote" class="absolute top-6 right-6 w-8 h-8 md:w-12 md:h-12 text-cream-100 fill-current group-hover:text-gold-100 transition-colors duration-500"></i>
+                    <p class="text-cream-800 text-sm md:text-lg italic leading-relaxed mb-6 md:mb-8 font-serif relative z-10">"${wish.message}"</p>
+                    <div class="flex items-center gap-3 md:gap-4 border-t border-cream-100 pt-4 md:pt-6 relative z-10">
+                        <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-cream-50 flex items-center justify-center text-gold-600 font-serif font-bold text-xs md:text-sm border border-gold-200 shadow-sm group-hover:bg-gold-50 transition-colors duration-300">${initial}</div>
                         <span class="text-xs md:text-sm font-bold uppercase tracking-wider text-cream-900">${wish.name}</span>
                     </div>
                 </div>
@@ -1749,46 +1796,54 @@
             lucide.createIcons();
         }
 
-        function openWishModal() {
+        window.openWishModal = function() {
+            lockScroll();
             const modal = document.getElementById('wish-modal');
             modal.classList.remove('hidden');
             void modal.offsetWidth;
             modal.classList.add('open');
             modal.style.opacity = '1';
         }
-        function closeWishModal() {
+        window.closeWishModal = function() {
             const modal = document.getElementById('wish-modal');
             modal.classList.remove('open');
             modal.style.opacity = '0';
-            setTimeout(() => modal.classList.add('hidden'), 400);
+            setTimeout(() => { modal.classList.add('hidden'); unlockScroll(); }, 400);
             document.getElementById('wish-form').reset();
         }
-        function submitWish(e) {
+        window.submitWish = async function(e) {
             e.preventDefault();
+            if(!user) return;
             const name = document.getElementById('wish-name').value;
             const message = document.getElementById('wish-message').value;
             
-            const wishes = JSON.parse(localStorage.getItem('weddingWishes') || '[]');
-            wishes.unshift({ name, message, date: new Date().toLocaleDateString() });
-            localStorage.setItem('weddingWishes', JSON.stringify(wishes));
-
-            renderGuestbook(); 
-            document.getElementById('guestbook-container').scrollTo({ left: 0, behavior: 'smooth' });
-
             const btn = document.getElementById('wish-submit-btn');
             const originalHTML = btn.innerHTML;
-            btn.innerHTML = '<i data-lucide="check" class="w-4 h-4 md:w-5 md:h-5"></i> Posted!';
+            btn.innerHTML = '<i data-lucide="loader-2" class="w-4 h-4 md:w-5 md:h-5 animate-spin"></i> Saving...';
             lucide.createIcons();
-            
-            setTimeout(() => {
-                closeWishModal();
-                setTimeout(() => btn.innerHTML = originalHTML, 400);
-            }, 1000);
+
+            try {
+                const wishesRef = collection(db, 'artifacts', appId, 'public', 'data', 'wishes');
+                await addDoc(wishesRef, { name, message, timestamp: Date.now(), date: new Date().toLocaleDateString() });
+
+                document.getElementById('guestbook-container').scrollTo({ left: 0, behavior: 'smooth' });
+                btn.innerHTML = '<i data-lucide="check" class="w-4 h-4 md:w-5 md:h-5"></i> Posted!';
+                lucide.createIcons();
+                
+                setTimeout(() => {
+                    closeWishModal();
+                    setTimeout(() => btn.innerHTML = originalHTML, 400);
+                }, 1000);
+            } catch(err) {
+                console.error("Error saving wish:", err);
+                btn.innerHTML = originalHTML;
+                showCustomAlert("Error", "Could not send note.", "alert-triangle");
+            }
         }
 
-        // --- NEW: Advanced 9. AI Assistant (Nyota) ---
+        // --- AI Assistant (Nyota) ---
         let chatOpen = false;
-        function toggleChat() {
+        window.toggleChat = function() {
             const container = document.getElementById('ai-chat-container');
             const windowEl = document.getElementById('chat-window');
             const fab = document.getElementById('ai-fab');
@@ -1812,16 +1867,9 @@
             chatOpen = !chatOpen;
         }
 
-        function handleChatEnter(e) {
-            if(e.key === 'Enter') sendMessage();
-        }
+        window.handleChatEnter = function(e) { if(e.key === 'Enter') sendMessage(); }
+        window.sendSuggested = function(text) { document.getElementById('chat-input').value = text; sendMessage(); }
 
-        function sendSuggested(text) {
-            document.getElementById('chat-input').value = text;
-            sendMessage();
-        }
-
-        // Advanced scoring logic for AI
         const knowledgeBase = [
             { tags: ['time', 'when', 'schedule', 'start', 'late'], answer: "The festivities begin on Feb 5th at 4:00 PM with the Mehndi. The main Wedding Ceremony is on Feb 7th at 9:00 PM." },
             { tags: ['dinner', 'food', 'eat', 'menu', 'menu', 'catering'], answer: "Dinner will be a grand feast! The Punjabi and Chinese counters are currently open. Gujarati Thali opens shortly after." },
@@ -1842,18 +1890,11 @@
 
             for (const entry of knowledgeBase) {
                 let score = 0;
-                for (const tag of entry.tags) {
-                    if (lowerInput.includes(tag)) score++;
-                }
-                if (score > maxScore) {
-                    maxScore = score;
-                    bestMatch = entry;
-                }
+                for (const tag of entry.tags) if (lowerInput.includes(tag)) score++;
+                if (score > maxScore) { maxScore = score; bestMatch = entry; }
             }
 
             if (maxScore > 0) return bestMatch.answer;
-            
-            // conversational fallbacks
             if (lowerInput.includes('hi') || lowerInput.includes('hello') || lowerInput.includes('hey')) {
                 return `Hello ${currentGuestName}! How can I make your wedding experience smoother today?`;
             }
@@ -1864,7 +1905,7 @@
             return "That's a great question! While I don't have that exact detail, you can easily reach our Hospitality Desk at +1234567890 for personalized help.";
         }
 
-        function sendMessage() {
+        window.sendMessage = function() {
             const input = document.getElementById('chat-input');
             const text = input.value.trim();
             if(!text) return;
@@ -1872,13 +1913,11 @@
             appendMessage(text, 'user');
             input.value = '';
 
-            // Hide suggestions once chatting starts to clear up space
             document.getElementById('suggested-prompts').classList.add('hidden');
 
             const typingInd = document.getElementById('typing-indicator');
             typingInd.classList.remove('hidden');
             
-            // Scroll to bottom
             const chatBox = document.getElementById('chat-messages');
             setTimeout(() => chatBox.scrollTop = chatBox.scrollHeight, 50);
 
@@ -1886,7 +1925,7 @@
                 typingInd.classList.add('hidden');
                 const response = getBotResponse(text);
                 appendMessage(response, 'bot');
-            }, 1200 + Math.random() * 800); // Realistic dynamic delay
+            }, 1200 + Math.random() * 800);
         }
 
         function appendMessage(text, sender) {
@@ -1908,30 +1947,18 @@
             chatBox.scrollTop = chatBox.scrollHeight;
         }
 
-        // Map Redirects
-        function openMap(locationQuery) {
-            const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationQuery)}`;
-            window.open(url, '_blank');
-        }
-
-        function openUber(destination) {
-            const url = `https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=${encodeURIComponent(destination)}`;
-            window.open(url, '_blank');
-        }
-
-        function addToCalendar(title, startDateStr, location) {
+        // Map & Extras
+        window.openMap = function(locationQuery) { window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationQuery)}`, '_blank'); }
+        window.openUber = function(destination) { window.open(`https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=${encodeURIComponent(destination)}`, '_blank'); }
+        window.addToCalendar = function(title, startDateStr, location) {
             const endDateStr = (parseInt(startDateStr.substring(0,8)) + 1).toString() + "T000000"; 
             const details = "We can't wait to celebrate with you! - Aarav & Kiara";
-            const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDateStr}/${endDateStr}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
-            window.open(url, '_blank');
+            window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDateStr}/${endDateStr}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`, '_blank');
         }
 
-        // File Upload (Gallery)
-        function triggerUpload() {
-            document.getElementById('gallery-upload-input').click();
-        }
-
-        function handleFileUpload(event) {
+        // Gallery File Upload
+        window.triggerUpload = function() { document.getElementById('gallery-upload-input').click(); }
+        window.handleFileUpload = function(event) {
             const file = event.target.files[0];
             if(file) {
                 const reader = new FileReader();
@@ -1941,7 +1968,6 @@
                     newDiv.className = 'overflow-hidden rounded-lg shadow-sm group cursor-pointer animate-pop-in';
                     newDiv.innerHTML = `<img src="${e.target.result}" class="w-full h-48 md:h-72 lg:h-80 object-cover group-hover:scale-110 transition-all duration-700" alt="Uploaded photo">`;
                     grid.prepend(newDiv);
-                    
                     setTimeout(() => showCustomAlert('Upload Successful', 'Your beautiful photo has been successfully added to the live gallery.', 'check-circle'), 200);
                 }
                 reader.readAsDataURL(file);
@@ -1949,7 +1975,8 @@
         }
 
         // Registry Modal
-        function openRegistry(fundName) {
+        window.openRegistry = function(fundName) {
+            lockScroll();
             const modal = document.getElementById('registry-modal');
             document.getElementById('registry-title').innerText = fundName;
             modal.classList.remove('hidden');
@@ -1958,15 +1985,15 @@
             modal.style.opacity = '1';
         }
         
-        function closeRegistry() {
+        window.closeRegistry = function() {
             const modal = document.getElementById('registry-modal');
             modal.classList.remove('open');
             modal.style.opacity = '0';
-            setTimeout(() => modal.classList.add('hidden'), 400);
+            setTimeout(() => { modal.classList.add('hidden'); unlockScroll(); }, 400);
             document.getElementById('contribution-amount').value = '';
         }
 
-        function processContribution() {
+        window.processContribution = function() {
             const amount = document.getElementById('contribution-amount').value;
             if(!amount || amount <= 0) {
                 showCustomAlert('Invalid Amount', 'Please enter a valid contribution amount to proceed.', 'alert-circle');
@@ -1989,13 +2016,11 @@
                         btn.innerHTML = originalText;
                         btn.classList.remove('bg-green-600', 'border-green-600');
                         btn.classList.add('bg-gold-500');
-                        
                         setTimeout(() => showCustomAlert('Contribution Received', 'Thank you so much for your generous gift!', 'heart'), 300);
                     }, 400);
                 }, 1500);
             }, 2000);
         }
-
     </script>
 </body>
 </html>
