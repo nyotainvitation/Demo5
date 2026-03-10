@@ -1092,7 +1092,7 @@
 
     <!-- 🎥 Cinematic Trailer Modal -->
     <div id="trailer-modal" class="fixed inset-0 bg-cream-900/95 z-[100] flex items-center justify-center hidden opacity-0 transition-opacity duration-500 backdrop-blur-md px-4">
-        <button onclick="closeTrailer()" class="absolute top-6 left-6 md:top-10 md:left-10 text-white/70 hover:text-white p-2 transition-all flex items-center gap-3 group z-50">
+        <button onclick="closeTrailer()" class="absolute top-6 left-6 md:top-10 left-10 text-white/70 hover:text-white p-2 transition-all flex items-center gap-3 group z-50">
             <i data-lucide="arrow-left" class="w-6 h-6 md:w-8 md:h-8 group-hover:-translate-x-2 transition-transform"></i>
             <span class="tracking-[0.2em] md:tracking-[0.3em] uppercase text-xs md:text-sm font-bold">Back</span>
         </button>
@@ -1172,21 +1172,9 @@
                 try {
                     await signInAnonymously(auth);
                 } catch(err) {
-                    console.error("Firebase Auth Error:", err);
-                    
-                    // Display visual alert to guide the developer on how to fix this issue
-                    setTimeout(() => {
-                        if(window.showCustomAlert) {
-                            window.showCustomAlert(
-                                "Firebase Setup Required", 
-                                "Please go to your Firebase Console -> Authentication -> Sign-in method, and enable the 'Anonymous' provider.", 
-                                "alert-triangle"
-                            );
-                        }
-                    }, 2000);
-
-                    // Add a fallback so the rest of the application (Firestore) can still try to connect
-                    // This allows the app to continue functioning if Firestore Rules are set to public (`allow read, write: if true;`)
+                    // Auth failed (likely because Anonymous Auth is not enabled or domain is unauthorized)
+                    // We will silently fallback to unauthenticated mode. 
+                    // As long as Firestore rules are public, the app will continue to work.
                     user = { uid: 'unauthenticated' };
                     setupRealtimeListeners();
                 }
