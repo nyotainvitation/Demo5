@@ -1144,7 +1144,7 @@
     <!-- CLOUD FIREBASE IMPLEMENTATION + SCRIPTS -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, doc, setDoc, getDocs, addDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         // Global State & Firebase Initialization
@@ -1154,24 +1154,48 @@
         let globalWishes = [];
 
         try {
-            const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+            const firebaseConfig = {
+              apiKey: "AIzaSyACnKIdicTG2dSvIuz2huxV6_UWLyplQ4k",
+              authDomain: "aarav-kiara-wedding-e6b48.firebaseapp.com",
+              projectId: "aarav-kiara-wedding-e6b48",
+              storageBucket: "aarav-kiara-wedding-e6b48.firebasestorage.app",
+              messagingSenderId: "697372211209",
+              appId: "1:697372211209:web:d8a7833d802b67da7ee0d8"
+            };
+            
             app = initializeApp(firebaseConfig);
             auth = getAuth(app);
             db = getFirestore(app);
-            appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+            appId = 'aarav-kiara-wedding-e6b48';
             
             async function initAuth() {
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
+                try {
                     await signInAnonymously(auth);
+                } catch(err) {
+                    console.error("Firebase Auth Error:", err);
+                    
+                    // Display visual alert to guide the developer on how to fix this issue
+                    setTimeout(() => {
+                        if(window.showCustomAlert) {
+                            window.showCustomAlert(
+                                "Firebase Setup Required", 
+                                "Please go to your Firebase Console -> Authentication -> Sign-in method, and enable the 'Anonymous' provider.", 
+                                "alert-triangle"
+                            );
+                        }
+                    }, 2000);
+
+                    // Add a fallback so the rest of the application (Firestore) can still try to connect
+                    // This allows the app to continue functioning if Firestore Rules are set to public (`allow read, write: if true;`)
+                    user = { uid: 'unauthenticated' };
+                    setupRealtimeListeners();
                 }
             }
             initAuth();
 
             onAuthStateChanged(auth, (currentUser) => {
-                user = currentUser;
-                if (user) {
+                if (currentUser) {
+                    user = currentUser;
                     setupRealtimeListeners();
                 }
             });
